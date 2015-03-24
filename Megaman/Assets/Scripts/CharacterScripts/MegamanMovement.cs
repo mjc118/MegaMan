@@ -18,7 +18,8 @@ public class MegamanMovement : MonoBehaviour {
 	public bool FacingRight = true;
 
 	Animator anim;
-	
+    Animator HealthBarAnim;
+
 	//for sliding
 	public bool onWall = false;
 	public Transform wallCheck;
@@ -58,12 +59,13 @@ public class MegamanMovement : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		anim = GetComponent<Animator> ();
+        HealthBarAnim = GameObject.Find("Main Camera/MMXHealthBar/HealthMissing").GetComponent<Animator>();
 		StartCoroutine ("InitialSpawn");
 	}
 
 	void FixedUpdate()
 	{		
-		GameObject.Find ("Main Camera/MMXHealthBar/HealthMissing").GetComponent<Animator> ().SetInteger ("Health", 16 - (int)Health);
+		HealthBarAnim.SetInteger ("Health", 16 - (int)Health);
 		if (Health <= 0) {
 			StartCoroutine("Death");		
 		}

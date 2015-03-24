@@ -4,6 +4,7 @@ using System.Collections;
 public class NeonTigerAI : MonoBehaviour {
 
 	Animator NeonTigerAnim;
+    Animator BossHealthBar;
 
 	public float Health;
 	bool Dieing = false;
@@ -44,6 +45,9 @@ public class NeonTigerAI : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		NeonTigerAnim = GetComponent<Animator> ();
+        GameObject.Find("Main Camera/BossHealthBar").GetComponent<SpriteRenderer>().enabled = true;
+        GameObject.Find("Main Camera/BossHealthBar/HealthMissing").GetComponent<SpriteRenderer>().enabled = true;
+        BossHealthBar = GameObject.Find("Main Camera/BossHealthBar/HealthMissing").GetComponent<Animator>();
 		PlayerPos = GameObject.Find ("Character").transform;
 		transform.parent.gameObject.GetComponent<EnemySpawnPoint> ().FacingRight = false;
 		StartCoroutine ("InitialSpawn");
@@ -51,6 +55,8 @@ public class NeonTigerAI : MonoBehaviour {
 	
 	// Update is called once per frame
 	void FixedUpdate () {
+
+        BossHealthBar.SetInteger("HealthMissing", 30 - (int)Health);
 
         if (Dieing)
         {
@@ -160,7 +166,7 @@ public class NeonTigerAI : MonoBehaviour {
 	}
 
 	void AttackRolling(float Roll){
-		if(Roll < 7){
+		if(Roll < 6){
 			if(OnGround){
 				ScatterShot();
 			}
@@ -185,6 +191,8 @@ public class NeonTigerAI : MonoBehaviour {
 
 	public void MegamanDied(){
 		transform.parent.gameObject.GetComponent<EnemySpawnPoint>().IsThisEnemyAlive = false;
+        GameObject.Find("Main Camera/BossHealthBar").GetComponent<SpriteRenderer>().enabled = false;
+        GameObject.Find("Main Camera/BossHealthBar/HealthMissing").GetComponent<SpriteRenderer>().enabled = false;
 		Destroy (gameObject);
 	}
 
@@ -296,7 +304,7 @@ public class NeonTigerAI : MonoBehaviour {
 				CurrentlyInvulnerable = true;
 				StartCoroutine("InvulnerabilityFrames");
 				SoundEffects.PlayOneShot (SoundClips[3]);
-				Health -= trigger.gameObject.GetComponent<LargeBusterShot>().ShotDamage;
+                Health -= 3f;
 			}
 		}
 	}
