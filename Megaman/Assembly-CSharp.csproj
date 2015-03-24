@@ -62,6 +62,7 @@
      <Compile Include="Assets\Scripts\EnemyScripts\NeonTiger\NeonTigerProjectileAI.cs" />
      <Compile Include="Assets\Scripts\EnemyScripts\RockMan\RockManAI.cs" />
      <Compile Include="Assets\Scripts\EnemyScripts\RockMan\RockManProjectile.cs" />
+     <Compile Include="Assets\Scripts\EnemyScripts\SeaHorse\SeaHorseAI.cs" />
      <Compile Include="Assets\Scripts\EnemyScripts\SpinShot\SpinShotAI.cs" />
      <Compile Include="Assets\Scripts\EnemyScripts\SpinShot\SpinShotProjectile.cs" />
      <Compile Include="Assets\Scripts\MeshSortingLayer.cs" />

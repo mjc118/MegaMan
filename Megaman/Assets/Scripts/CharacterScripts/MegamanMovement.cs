@@ -220,6 +220,7 @@ public class MegamanMovement : MonoBehaviour {
 		} 
 		else if (collide.gameObject.tag == "Enemy" && !CurrentlyInvulnerable) {
 			CurrentlyInvulnerable = true;
+            Health -= collide.gameObject.GetComponentInParent<EnemySpawnPoint>().CollisionDamage;
 			StartCoroutine("InvulnerabilityFrames", collide.transform.parent.gameObject.GetComponent<EnemySpawnPoint>().FacingRight);
 		}
 	}
@@ -227,6 +228,7 @@ public class MegamanMovement : MonoBehaviour {
 	void OnTriggerEnter2D(Collider2D trigger){
 		if (trigger.gameObject.tag == "Enemy" && !CurrentlyInvulnerable) {
 			CurrentlyInvulnerable = true;
+            Health -= trigger.gameObject.GetComponentInParent<EnemySpawnPoint>().CollisionDamage;
 			StartCoroutine("InvulnerabilityFrames", trigger.GetComponentInParent<EnemySpawnPoint>().FacingRight);
 		}
 		else if(trigger.gameObject.tag == "SpinShotProjectile"){
@@ -243,6 +245,7 @@ public class MegamanMovement : MonoBehaviour {
 		}
 		if (trigger.gameObject.tag == "Enemy" && !CurrentlyInvulnerable) {
 			CurrentlyInvulnerable = true;
+            Health -= trigger.gameObject.GetComponentInParent<EnemySpawnPoint>().CollisionDamage;
 			StartCoroutine("InvulnerabilityFrames", trigger.transform.parent.gameObject.GetComponent<EnemySpawnPoint>().FacingRight);
 		}
 	}
@@ -280,7 +283,6 @@ public class MegamanMovement : MonoBehaviour {
 
 		rigidbody2D.AddForce (KnockBackForce * 10);
 		
-		Health -= 4;
 		SoundEffects.PlayOneShot (MegaManSoundClips [0]);
 
 		while (InvulnerabilityFrame > time) 

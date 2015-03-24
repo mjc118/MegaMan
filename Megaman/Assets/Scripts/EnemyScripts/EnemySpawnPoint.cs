@@ -2,6 +2,9 @@
 using System.Collections;
 
 public class EnemySpawnPoint : MonoBehaviour {
+
+    public float CollisionDamage;
+
 	public bool FacingRight = false;
 	public bool IsThisEnemyAlive = false;
 	public bool UpsideDown = false;
@@ -11,6 +14,8 @@ public class EnemySpawnPoint : MonoBehaviour {
 	public Collider2D BossCeilingCollider;
 	Vector3 SpawnPosition;
 	float SpawnBoundaryCheck;
+    public float SpawnBoundaryUpperLimit;
+    public float SpawnBoundaryLowerLimit;
 
 	//need to track where player is in regards to spawn point
 	Transform PlayerPos;
@@ -28,7 +33,8 @@ public class EnemySpawnPoint : MonoBehaviour {
 				//11f, 10f
 				//calculate if player is within boundary to merit spawning an enemy
 				SpawnBoundaryCheck = Mathf.Abs(transform.position.x	- PlayerPos.position.x);
-				if(SpawnBoundaryCheck < 15f && SpawnBoundaryCheck > 14f){
+                if (SpawnBoundaryCheck < SpawnBoundaryUpperLimit && SpawnBoundaryCheck > SpawnBoundaryLowerLimit)
+                {
 					Debug.Log ("Spawn");
 					GameObject child = Instantiate (EnemyPrefab, SpawnPosition, Quaternion.identity) as GameObject;
 					child.transform.parent = this.transform;
