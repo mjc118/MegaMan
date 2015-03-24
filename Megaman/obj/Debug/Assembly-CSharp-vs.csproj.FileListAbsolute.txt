@@ -12,3 +12,17 @@ C:\Users\Mike\Documents\Megaman\Temp\bin\Debug\Assembly-CSharp-firstpass.pdb
 C:\Users\Mike\Documents\Megaman\obj\Debug\Assembly-CSharp-vs.csprojResolveAssemblyReference.cache
 C:\Users\Mike\Documents\Megaman\obj\Debug\Assembly-CSharp.dll
 C:\Users\Mike\Documents\Megaman\obj\Debug\Assembly-CSharp.pdb
+F:\Mike\Documents\GitHub\MegaMan\Megaman\Temp\bin\Debug\Assembly-CSharp.dll
+F:\Mike\Documents\GitHub\MegaMan\Megaman\Temp\bin\Debug\Assembly-CSharp.pdb
+F:\Mike\Documents\GitHub\MegaMan\Megaman\Temp\bin\Debug\Assembly-UnityScript-firstpass.dll
+F:\Mike\Documents\GitHub\MegaMan\Megaman\Temp\bin\Debug\UnityEditor.dll
+F:\Mike\Documents\GitHub\MegaMan\Megaman\Temp\bin\Debug\UnityEngine.dll
+F:\Mike\Documents\GitHub\MegaMan\Megaman\Temp\bin\Debug\UnityEngine.UI.dll
+F:\Mike\Documents\GitHub\MegaMan\Megaman\Temp\bin\Debug\Mono.Cecil.dll
+F:\Mike\Documents\GitHub\MegaMan\Megaman\Temp\bin\Debug\nunit.framework.dll
+F:\Mike\Documents\GitHub\MegaMan\Megaman\Temp\bin\Debug\Unity.DataContract.dll
+F:\Mike\Documents\GitHub\MegaMan\Megaman\Temp\bin\Debug\ICSharpCode.NRefactory.dll
+F:\Mike\Documents\GitHub\MegaMan\Megaman\Temp\bin\Debug\Assembly-CSharp-firstpass.pdb
+F:\Mike\Documents\GitHub\MegaMan\Megaman\obj\Debug\Assembly-CSharp-vs.csprojResolveAssemblyReference.cache
+F:\Mike\Documents\GitHub\MegaMan\Megaman\obj\Debug\Assembly-CSharp.dll
+F:\Mike\Documents\GitHub\MegaMan\Megaman\obj\Debug\Assembly-CSharp.pdb

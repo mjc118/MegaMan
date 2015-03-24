@@ -7,6 +7,7 @@ public class NeonTigerAI : MonoBehaviour {
 
 	public float Health;
 	bool Dieing = false;
+    public float DeathAnimDuration;
 	public float InvulnerabilityFrame;
 	public bool CurrentlyInvulnerable = false;
 	public float MoveSpeed;
@@ -31,6 +32,7 @@ public class NeonTigerAI : MonoBehaviour {
 	AudioSource MainAudio;
 
 	public GameObject NeonTigerProjectilePrefab;
+    public GameObject[] DeathExplosions;
 
 	void Awake(){
 		MainAudio = GameObject.Find ("Character").GetComponent<AudioSource> ();
@@ -49,6 +51,27 @@ public class NeonTigerAI : MonoBehaviour {
 	
 	// Update is called once per frame
 	void FixedUpdate () {
+
+        if (Dieing)
+        {
+            //controls how long our death animation plays before destroying our game object
+            DeathAnimDuration -= Time.deltaTime;
+            if (DeathAnimDuration < 0)
+            {
+                GetComponentInParent<EnemySpawnPoint>().IsThisEnemyAlive = false;
+                GetComponentInParent<EnemySpawnPoint>().SpawnBoss = false;
+                Destroy(gameObject);
+            }
+        }
+
+        if (Health <= 0 && !Dieing)
+        {
+            Dieing = true;
+            NeonTigerAnim.SetBool("TakeDamage", true);
+            MainAudio.Stop();
+            StartCoroutine("Death");
+        }
+
 		FacingRight = transform.parent.gameObject.GetComponent<EnemySpawnPoint> ().FacingRight;
 
 		float Movement = (MoveSpeed * Time.deltaTime);
@@ -60,55 +83,71 @@ public class NeonTigerAI : MonoBehaviour {
 		
 		OnWall = Physics2D.OverlapCircle (WallCheck.position, 0.2f, WhatIsTerrain);
 		NeonTigerAnim.SetBool ("OnWall", OnWall);
+        if (!Dieing)
+        {
+            if (JumpingToWall && !FlippedSpritesForHittingWall && OnWall)
+            {
+                //set this to false when you jump off the wall
+                FlippedSpritesForHittingWall = true;
+                JumpingToWall = false;
+                Flip();
+                Invoke("DelaySetAttackToFalse", 1.5f);
+            }
 
-		if(JumpingToWall && !FlippedSpritesForHittingWall && OnWall){
-			//set this to false when you jump off the wall
-			FlippedSpritesForHittingWall = true;
-			JumpingToWall = false;
-			Flip ();
-			Invoke ("DelaySetAttackToFalse", 1.5f);
-		}		
+            if (JumpingToWall && !OnWall)
+            {
+                if (!FacingRight)
+                {
+                    DirectionTranslation = (Vector3.left * Movement) + ((Vector3.up * Movement) - ((Vector3.up * Movement) / 3));
+                }
+                else
+                {
+                    DirectionTranslation = (Vector3.right * Movement) + ((Vector3.up * Movement) - ((Vector3.up * Movement) / 3));
+                }
 
-		if (JumpingToWall && !OnWall) {
-			if(!FacingRight){
-				DirectionTranslation = (Vector3.left * Movement) + ((Vector3.up * Movement) - ((Vector3.up * Movement)/3));
-			}
-			else{
-				DirectionTranslation = (Vector3.right * Movement) + ((Vector3.up * Movement) - ((Vector3.up * Movement)/3));
-			}
+                transform.Translate(DirectionTranslation);
 
-			transform.Translate (DirectionTranslation);
+            }
+            else if (JumpingOffWall && !OnGround)
+            {
+                if (!FacingRight)
+                {
+                    DirectionTranslation = /*((Vector3.left * Movement)/12) + */((Vector3.down * Movement) - ((Vector3.down * Movement) / 2));
+                }
+                else
+                {
+                    DirectionTranslation = /*((Vector3.right * Movement)/12) + */((Vector3.down * Movement) - ((Vector3.down * Movement) / 2));
+                }
 
-		}else if(JumpingOffWall && !OnGround){
-			if(!FacingRight){
-				DirectionTranslation = /*((Vector3.left * Movement)/12) + */((Vector3.down * Movement) - ((Vector3.down * Movement)/2));
-			}
-			else{
-				DirectionTranslation = /*((Vector3.right * Movement)/12) + */((Vector3.down * Movement) - ((Vector3.down * Movement)/2));
-			}
+                transform.Translate(DirectionTranslation);
 
-			transform.Translate (DirectionTranslation);
+            }
+            else if (!OnWall && OnGround)
+            {
+                if (JumpingOffWall)
+                {
+                    JumpingOffWall = false;
+                    NeonTigerAnim.SetBool("JumpingOffWall", false);
+                    Invoke("DelaySetAttackToFalse", 1.5f);
+                }
 
-		}else if(!OnWall && OnGround){
-			if(JumpingOffWall){
-				JumpingOffWall = false;
-				NeonTigerAnim.SetBool("JumpingOffWall", false);
-				Invoke ("DelaySetAttackToFalse", 1.5f);
-			}
+                if (PlayerPos.position.x - transform.position.x < 0 && FacingRight)
+                {
+                    Flip();
+                }
+                else if (PlayerPos.position.x - transform.position.x > 0 && !FacingRight)
+                {
+                    Flip();
+                }
+            }
 
-			if (PlayerPos.position.x - transform.position.x < 0 && FacingRight) {
-				Flip ();
-			} else if (PlayerPos.position.x - transform.position.x > 0 && !FacingRight) {
-				Flip ();		
-			}
-		}
+            if (!Spawning && !Attacking && !JumpingToWall && !JumpingOffWall && !Dieing)
+            {
+                Attacking = true;
 
-		if (!Spawning && !Attacking && !JumpingToWall && !JumpingOffWall && !Dieing) {
-			Attacking = true;
-
-			AttackRolling(Random.Range (1,10));
-		}
-
+                AttackRolling(Random.Range(1, 10));
+            }
+        }
 		transform.parent.gameObject.GetComponent<EnemySpawnPoint> ().FacingRight = FacingRight;
 	}
 
@@ -222,6 +261,22 @@ public class NeonTigerAI : MonoBehaviour {
 
 		CurrentlyInvulnerable = false;
 	}
+
+    IEnumerator Death()
+    {
+        int WhichExplosion = 0;
+        while (true)
+        {
+            Instantiate(DeathExplosions[WhichExplosion], new Vector3(transform.position.x + Random.Range(-1f, 0.75f), transform.position.y + Random.Range(-1f, 0.7f), transform.position.z), Quaternion.identity);
+            
+            //alternate our explosions
+            if (WhichExplosion == 0) { ++WhichExplosion; }
+            else { --WhichExplosion; }
+
+            yield return new WaitForSeconds(0.25f);
+        }
+
+    }
 
 	void OnTriggerEnter2D(Collider2D trigger){
 		if(!CurrentlyInvulnerable){

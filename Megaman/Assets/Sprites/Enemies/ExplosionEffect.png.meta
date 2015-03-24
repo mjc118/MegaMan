@@ -1,0 +1,234 @@
+fileFormatVersion: 2
+guid: 88f4a8c4719dc8342b8e58875558584f
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: ExplosionEffect_0
+    21300002: ExplosionEffect_1
+    21300004: ExplosionEffect_2
+    21300006: ExplosionEffect_4
+    21300008: ExplosionEffect_5
+    21300010: ExplosionEffect_6
+    21300012: ExplosionEffect_8
+    21300014: ExplosionEffect_9
+    21300016: ExplosionEffect_10
+    21300018: ExplosionEffect_11
+    21300020: ExplosionEffect_12
+    21300022: ExplosionEffect_14
+    21300024: ExplosionEffect_15
+    21300026: ExplosionEffect_17
+    21300028: ExplosionEffect_19
+    21300030: ExplosionEffect_21
+    21300032: ExplosionEffect_23
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: ExplosionEffect_0
+      rect:
+        serializedVersion: 2
+        x: 101
+        y: 65
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: ExplosionEffect_1
+      rect:
+        serializedVersion: 2
+        x: 124
+        y: 57
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: ExplosionEffect_2
+      rect:
+        serializedVersion: 2
+        x: 166
+        y: 62
+        width: 28
+        height: 24
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: ExplosionEffect_4
+      rect:
+        serializedVersion: 2
+        x: 210
+        y: 61
+        width: 30
+        height: 27
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: ExplosionEffect_5
+      rect:
+        serializedVersion: 2
+        x: 253
+        y: 60
+        width: 32
+        height: 27
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: ExplosionEffect_6
+      rect:
+        serializedVersion: 2
+        x: 293
+        y: 60
+        width: 32
+        height: 23
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: ExplosionEffect_8
+      rect:
+        serializedVersion: 2
+        x: 341
+        y: 63
+        width: 32
+        height: 16
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: ExplosionEffect_9
+      rect:
+        serializedVersion: 2
+        x: 6
+        y: 21
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: ExplosionEffect_10
+      rect:
+        serializedVersion: 2
+        x: 46
+        y: 29
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: ExplosionEffect_11
+      rect:
+        serializedVersion: 2
+        x: 71
+        y: 24
+        width: 28
+        height: 28
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: ExplosionEffect_12
+      rect:
+        serializedVersion: 2
+        x: 108
+        y: 20
+        width: 32
+        height: 31
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: ExplosionEffect_14
+      rect:
+        serializedVersion: 2
+        x: 151
+        y: 23
+        width: 38
+        height: 30
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: ExplosionEffect_15
+      rect:
+        serializedVersion: 2
+        x: 201
+        y: 15
+        width: 42
+        height: 38
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: ExplosionEffect_17
+      rect:
+        serializedVersion: 2
+        x: 257
+        y: 11
+        width: 44
+        height: 41
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: ExplosionEffect_19
+      rect:
+        serializedVersion: 2
+        x: 312
+        y: 9
+        width: 44
+        height: 43
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: ExplosionEffect_21
+      rect:
+        serializedVersion: 2
+        x: 368
+        y: 6
+        width: 46
+        height: 47
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: ExplosionEffect_23
+      rect:
+        serializedVersion: 2
+        x: 432
+        y: 4
+        width: 46
+        height: 49
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+  spritePackingTag: 
+  userData: 

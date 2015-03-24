@@ -67,27 +67,27 @@ public class NeonTigerProjectileAI : MonoBehaviour {
 		}else{//Firing from Wall
 			if(ParentFacingRight){//Parent is on the Left Wall
 				if(ShotNumber == 6){
-					DirectionTranslation = (Vector3.down * Movement) + ((Vector3.right * Movement)/3);
+					DirectionTranslation = ((Vector3.down * Movement)/4) + (Vector3.right * Movement);
 				}else if(ShotNumber == 7){
-					DirectionTranslation = (Vector3.down * Movement) + ((Vector3.left * Movement)/4);
-				}else if(ShotNumber == 8){
-					DirectionTranslation = (Vector3.down * Movement) + ((Vector3.right * Movement)/2);
-				}else if(ShotNumber == 9){
-					DirectionTranslation = (Vector3.down * Movement);
-				}else{
 					DirectionTranslation = (Vector3.down * Movement) + (Vector3.right * Movement);
+				}else if(ShotNumber == 8){
+					DirectionTranslation = (Vector3.right * Movement);
+				}else if(ShotNumber == 9){
+					DirectionTranslation = ((Vector3.down * Movement)/3) + (Vector3.right * Movement);
+				}else{
+					DirectionTranslation = ((Vector3.down * Movement)/2) + (Vector3.right * Movement);
 				}
 			}else{
 				if(ShotNumber == 6){
-					DirectionTranslation = (Vector3.down * Movement) + ((Vector3.left * Movement)/3);
+					DirectionTranslation = ((Vector3.down * Movement)/4) + ((Vector3.left * Movement));
 				}else if(ShotNumber == 7){
-					DirectionTranslation = (Vector3.down * Movement) + ((Vector3.right * Movement)/4);
-				}else if(ShotNumber == 8){
-					DirectionTranslation = (Vector3.down * Movement) + ((Vector3.left * Movement)/2);
-				}else if(ShotNumber == 9){
-					DirectionTranslation = (Vector3.down * Movement);
-				}else{
 					DirectionTranslation = (Vector3.down * Movement) + (Vector3.left * Movement);
+				}else if(ShotNumber == 8){
+					DirectionTranslation = (Vector3.left * Movement);
+				}else if(ShotNumber == 9){
+					DirectionTranslation = ((Vector3.down * Movement)/3) + (Vector3.left * Movement);
+				}else{
+					DirectionTranslation = ((Vector3.down * Movement)/2) + (Vector3.left * Movement);
 				}
 			}
 		}

@@ -8,8 +8,11 @@ public class WeaponsHandling : MonoBehaviour {
     public bool IsBossSpawning;
     public bool onWall;
     public bool OnGround;
+    public bool MediumShotCharge = false;
+    public bool LargeShotCharge = false;
 
     Animator anim;
+    Animator WeaponChargingAnim;
 
     //used for firing Projectiles
     public GameObject[] BusterShotPrefabs;
@@ -30,6 +33,7 @@ public class WeaponsHandling : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         anim = GetComponent<Animator>();
+        WeaponChargingAnim = GameObject.Find("Character/ChargeSprite").GetComponent<Animator>();
         CurrentShotsInPlay = 0;
         CurrentChargeShotTimeLeft = ChargeShotReq;
 	}
@@ -60,7 +64,25 @@ public class WeaponsHandling : MonoBehaviour {
                 {
                     BusterChargeSource.enabled = true;
                 }
+
                 CurrentChargeShotTimeLeft -= Time.deltaTime;
+
+                //handles setting our animator for charge animation appropriately
+                if (CurrentChargeShotTimeLeft > 0 && CurrentChargeShotTimeLeft < 2.5f)
+                {
+                    MediumShotCharge = true;
+                    WeaponChargingAnim.SetBool("MediumShotReady", MediumShotCharge);
+                }
+                else if (CurrentChargeShotTimeLeft <= 0)
+                {
+                    if (MediumShotCharge)
+                    {
+                        MediumShotCharge = false;
+                        WeaponChargingAnim.SetBool("MediumShotReady", MediumShotCharge);
+                    }
+                    LargeShotCharge = true;
+                    WeaponChargingAnim.SetBool("LargeShotReady", LargeShotCharge);
+                }
             }
             else if (CurrentChargeShotTimeLeft < (ChargeShotReq / 2) && CurrentChargeShotTimeLeft > 0)
             {
@@ -75,6 +97,8 @@ public class WeaponsHandling : MonoBehaviour {
                 CurrentChargeShotTimeLeft = ChargeShotReq;
                 BusterChargeSource.enabled = false;
                 InitialChargeSoundPlayed = false;
+                LargeShotCharge = false;
+                WeaponChargingAnim.SetBool("LargeShotReady", LargeShotCharge);
             }
             else if (CurrentChargeShotTimeLeft != ChargeShotReq)
             {
@@ -82,6 +106,12 @@ public class WeaponsHandling : MonoBehaviour {
                 BusterChargeSource.enabled = false;
                 InitialChargeSoundPlayed = false;
             }
+            else
+            {
+                MediumShotCharge = false;
+                WeaponChargingAnim.SetBool("MediumShotReady", MediumShotCharge);
+            }
+
         }
 	}
 

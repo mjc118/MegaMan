@@ -56,13 +56,14 @@
      <Compile Include="Assets\Scripts\CharacterScripts\MegamanMovement.cs" />
      <Compile Include="Assets\Scripts\CharacterScripts\WeaponsHandling.cs" />
      <Compile Include="Assets\Scripts\EnemyScripts\EnemySpawnPoint.cs" />
+     <Compile Include="Assets\Scripts\EnemyScripts\ExplosionScript.cs" />
      <Compile Include="Assets\Scripts\EnemyScripts\NeonTiger\BossSpawnScript.cs" />
      <Compile Include="Assets\Scripts\EnemyScripts\NeonTiger\NeonTigerAI.cs" />
      <Compile Include="Assets\Scripts\EnemyScripts\NeonTiger\NeonTigerProjectileAI.cs" />
-     <Compile Include="Assets\Scripts\EnemyScripts\RockManAI.cs" />
-     <Compile Include="Assets\Scripts\EnemyScripts\RockManProjectile.cs" />
-     <Compile Include="Assets\Scripts\EnemyScripts\SpinShotAI.cs" />
-     <Compile Include="Assets\Scripts\EnemyScripts\SpinShotProjectile.cs" />
+     <Compile Include="Assets\Scripts\EnemyScripts\RockMan\RockManAI.cs" />
+     <Compile Include="Assets\Scripts\EnemyScripts\RockMan\RockManProjectile.cs" />
+     <Compile Include="Assets\Scripts\EnemyScripts\SpinShot\SpinShotAI.cs" />
+     <Compile Include="Assets\Scripts\EnemyScripts\SpinShot\SpinShotProjectile.cs" />
      <Compile Include="Assets\Scripts\MeshSortingLayer.cs" />
      <Compile Include="Assets\Scripts\MovingPlatforms\FollowPath.cs" />
      <Compile Include="Assets\Scripts\MovingPlatforms\PlatformPathing.cs" />
@@ -77,7 +78,7 @@
      <None Include="Assets\Standard Assets (Mobile)\Shaders\Lightmap Shaders (Legacy)\Mobile Lightmap Only.shader" />
      <None Include="Assets\Standard Assets (Mobile)\Shaders\Lightmap Shaders (Legacy)\Mobile Lightmap AlphaTest.shader" />
  <Reference Include="Assembly-UnityScript-firstpass">
- <HintPath>C:/Users/Mike/Documents/Megaman/Library/ScriptAssemblies/Assembly-UnityScript-firstpass.dll</HintPath>
+ <HintPath>F:/Mike/Documents/GitHub/MegaMan/Megaman/Library/ScriptAssemblies/Assembly-UnityScript-firstpass.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.UI">
  <HintPath>F:/Program Files (x86)/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/4.6.1/UnityEngine.UI.dll</HintPath>
