@@ -22,6 +22,10 @@ public class NeonTigerAI : MonoBehaviour {
 	public bool FlippedSpritesForHittingWall = false;
 	public bool JumpingToWall = false;//used to transition from ground to wall
 	public bool JumpingOffWall = false;//used to transition from wall to ground
+    public bool SlashAttacking = false;//used to handle Slash Attack
+    bool SlashAttackFinished = false;
+    bool ReachedPlayer = false;
+    public float PlayerXPosition;
 
 	public bool Spawning = true;
 	bool Attacking = false;
@@ -100,7 +104,60 @@ public class NeonTigerAI : MonoBehaviour {
                 Invoke("DelaySetAttackToFalse", 1.5f);
             }
 
-            if (JumpingToWall && !OnWall)
+            if (SlashAttacking)
+            {
+                float DistanceFromTarget = Mathf.Abs(transform.position.x - PlayerXPosition);
+                Debug.Log(DistanceFromTarget);
+
+                OnGround = false;
+                NeonTigerAnim.SetBool("OnGround", OnGround);
+                if (SlashAttackFinished && !OnWall)
+                {
+                    if (!FacingRight)
+                    {
+                        DirectionTranslation = (Vector3.left * Movement);
+                    }
+                    else
+                    {
+                        DirectionTranslation = (Vector3.right * Movement);
+                    }
+
+                    transform.Translate(DirectionTranslation);
+                }
+                else if (OnWall && SlashAttackFinished)
+                {
+                    Flip();
+                    NeonTigerAnim.SetBool("OnWall", false);
+                    SlashAttacking = false;
+                    SlashAttackFinished = false;
+                    Invoke("DelaySetAttackToFalse", 3f);
+                }
+                else if(!ReachedPlayer)
+                {
+                    if (DistanceFromTarget > 2f)
+                    {
+                        if (!FacingRight)
+                        {
+                            DirectionTranslation = (Vector3.left * Movement);
+                        }
+                        else
+                        {
+                            DirectionTranslation = (Vector3.right * Movement);
+                        }
+
+                        transform.Translate(DirectionTranslation);
+
+                    }
+                    else
+                    {
+                        NeonTigerAnim.SetBool("SlashAttack", SlashAttacking);
+                        ReachedPlayer = true;
+                        Invoke("DelaySlashAttackFinished", 0.5f);
+                    }
+                }
+
+            }
+            else if (JumpingToWall && !OnWall)
             {
                 if (!FacingRight)
                 {
@@ -147,7 +204,7 @@ public class NeonTigerAI : MonoBehaviour {
                 }
             }
 
-            if (!Spawning && !Attacking && !JumpingToWall && !JumpingOffWall && !Dieing)
+            if (!Spawning && !Attacking && !JumpingToWall && !JumpingOffWall && !Dieing && !SlashAttacking)
             {
                 Attacking = true;
 
@@ -166,9 +223,16 @@ public class NeonTigerAI : MonoBehaviour {
 	}
 
 	void AttackRolling(float Roll){
-		if(Roll < 6){
+        if (OnGround && Health < 16 && Roll < 7)
+        {
+            SlashAttacking = true;
+            PlayerXPosition = PlayerPos.position.x;
+            ReachedPlayer = false;
+            SlashAttackFinished = false;
+        }
+		else if(Roll < 6){
 			if(OnGround){
-				ScatterShot();
+                ScatterShot();  
 			}
 			else{
 				JumpingOffWall = true;
@@ -188,6 +252,13 @@ public class NeonTigerAI : MonoBehaviour {
 	void DelaySetAttackToFalse(){
 		Attacking = false;
 	}
+
+    void DelaySlashAttackFinished()
+    {
+        //animation has an exit time so animation will play at least once
+        NeonTigerAnim.SetBool("SlashAttack", false);
+        SlashAttackFinished = true;
+    }
 
 	public void MegamanDied(){
 		transform.parent.gameObject.GetComponent<EnemySpawnPoint>().IsThisEnemyAlive = false;

@@ -24,7 +24,7 @@ public class MeshSortingLayer : MonoBehaviour {
 	}
 
 	void FixedUpdate(){
-		//wave amplitude
+		/*//wave amplitude
 		if (Input.GetKeyDown ("a")) {
 			if(Input.GetKey (KeyCode.LeftShift)){
 				WaveAmplitude += 1f;
@@ -50,7 +50,7 @@ public class MeshSortingLayer : MonoBehaviour {
 			else if(WaveAmplitude > 0){
 				WaveVelocity -= 0.1f;
 			}
-		}
+		}*/
 	}
 
 	void Update(){
