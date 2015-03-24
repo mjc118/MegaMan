@@ -1,0 +1,168 @@
+fileFormatVersion: 2
+guid: 1202535786ab5a544b26bb4938563521
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: mmm-mmxrockman_0
+    21300002: mmm-mmxrockman_1
+    21300004: mmm-mmxrockman_2
+    21300006: mmm-mmxrockman_3
+    21300008: mmm-mmxrockman_4
+    21300010: mmm-mmxrockman_5
+    21300012: mmm-mmxrockman_6
+    21300014: mmm-mmxrockman_7
+    21300016: mmm-mmxrockman_8
+    21300018: mmm-mmxrockman_9
+    21300020: mmm-mmxrockman_10
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: mmm-mmxrockman_0
+      rect:
+        serializedVersion: 2
+        x: 182
+        y: 1
+        width: 35
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: mmm-mmxrockman_1
+      rect:
+        serializedVersion: 2
+        x: 219
+        y: 1
+        width: 33
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: mmm-mmxrockman_2
+      rect:
+        serializedVersion: 2
+        x: 253
+        y: 1
+        width: 33
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: mmm-mmxrockman_3
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 1
+        width: 34
+        height: 55
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: mmm-mmxrockman_4
+      rect:
+        serializedVersion: 2
+        x: 361
+        y: 33
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: mmm-mmxrockman_5
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1
+        width: 31
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: mmm-mmxrockman_6
+      rect:
+        serializedVersion: 2
+        x: 33
+        y: 1
+        width: 31
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: mmm-mmxrockman_7
+      rect:
+        serializedVersion: 2
+        x: 66
+        y: 1
+        width: 30
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: mmm-mmxrockman_8
+      rect:
+        serializedVersion: 2
+        x: 97
+        y: 1
+        width: 27
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: mmm-mmxrockman_9
+      rect:
+        serializedVersion: 2
+        x: 126
+        y: 1
+        width: 24
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: mmm-mmxrockman_10
+      rect:
+        serializedVersion: 2
+        x: 152
+        y: 1
+        width: 28
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+  spritePackingTag: 
+  userData: 

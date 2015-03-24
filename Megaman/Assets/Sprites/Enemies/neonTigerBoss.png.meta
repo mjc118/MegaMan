@@ -1,0 +1,663 @@
+fileFormatVersion: 2
+guid: 09708e3e00c36404e8c3818543fbed48
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: neonTigerBoss_0
+    21300002: neonTigerBoss_1
+    21300004: neonTigerBoss_2
+    21300006: neonTigerBoss_3
+    21300008: neonTigerBoss_4
+    21300010: neonTigerBoss_5
+    21300012: neonTigerBoss_6
+    21300014: neonTigerBoss_7
+    21300016: neonTigerBoss_8
+    21300018: neonTigerBoss_9
+    21300020: neonTigerBoss_10
+    21300022: neonTigerBoss_11
+    21300024: neonTigerBoss_12
+    21300026: neonTigerBoss_13
+    21300028: neonTigerBoss_14
+    21300030: neonTigerBoss_15
+    21300032: neonTigerBoss_16
+    21300034: neonTigerBoss_17
+    21300036: neonTigerBoss_18
+    21300038: neonTigerBoss_19
+    21300040: neonTigerBoss_20
+    21300042: neonTigerBoss_21
+    21300044: neonTigerBoss_22
+    21300046: neonTigerBoss_23
+    21300048: neonTigerBoss_24
+    21300050: neonTigerBoss_25
+    21300052: neonTigerBoss_26
+    21300054: neonTigerBoss_27
+    21300056: neonTigerBoss_28
+    21300058: neonTigerBoss_29
+    21300060: neonTigerBoss_30
+    21300062: neonTigerBoss_31
+    21300064: neonTigerBoss_32
+    21300066: neonTigerBoss_33
+    21300068: neonTigerBoss_34
+    21300070: neonTigerBoss_35
+    21300072: neonTigerBoss_36
+    21300074: neonTigerBoss_37
+    21300076: neonTigerBoss_38
+    21300078: neonTigerBoss_39
+    21300080: neonTigerBoss_40
+    21300082: neonTigerBoss_41
+    21300084: neonTigerBoss_42
+    21300086: neonTigerBoss_43
+    21300088: neonTigerBoss_44
+    21300090: neonTigerBoss_45
+    21300092: neonTigerBoss_46
+    21300094: neonTigerBoss_47
+    21300096: neonTigerBoss_48
+    21300098: neonTigerBoss_49
+    21300100: neonTigerBoss_50
+    21300102: neonTigerBoss_51
+    21300104: neonTigerBoss_52
+    21300106: neonTigerBoss_53
+    21300108: neonTigerBoss_54
+    21300110: neonTigerBoss_55
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: neonTigerBoss_0
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 831
+        width: 48
+        height: 40
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: neonTigerBoss_1
+      rect:
+        serializedVersion: 2
+        x: 402
+        y: 853
+        width: 5
+        height: 5
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: neonTigerBoss_2
+      rect:
+        serializedVersion: 2
+        x: 409
+        y: 850
+        width: 11
+        height: 11
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: neonTigerBoss_3
+      rect:
+        serializedVersion: 2
+        x: 422
+        y: 848
+        width: 15
+        height: 15
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: neonTigerBoss_4
+      rect:
+        serializedVersion: 2
+        x: 439
+        y: 853
+        width: 5
+        height: 5
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: neonTigerBoss_5
+      rect:
+        serializedVersion: 2
+        x: 446
+        y: 851
+        width: 9
+        height: 9
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: neonTigerBoss_6
+      rect:
+        serializedVersion: 2
+        x: 457
+        y: 848
+        width: 15
+        height: 15
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: neonTigerBoss_7
+      rect:
+        serializedVersion: 2
+        x: 474
+        y: 841
+        width: 29
+        height: 29
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: neonTigerBoss_8
+      rect:
+        serializedVersion: 2
+        x: 505
+        y: 840
+        width: 31
+        height: 31
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: neonTigerBoss_9
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 744
+        width: 76
+        height: 79
+      alignment: 9
+      pivot: {x: .49000001, y: .519999981}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: neonTigerBoss_10
+      rect:
+        serializedVersion: 2
+        x: 209
+        y: 746
+        width: 76
+        height: 79
+      alignment: 9
+      pivot: {x: .49000001, y: .519999981}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: neonTigerBoss_11
+      rect:
+        serializedVersion: 2
+        x: 402
+        y: 814
+        width: 13
+        height: 13
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: neonTigerBoss_12
+      rect:
+        serializedVersion: 2
+        x: 421
+        y: 817
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: neonTigerBoss_13
+      rect:
+        serializedVersion: 2
+        x: 434
+        y: 816
+        width: 9
+        height: 9
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: neonTigerBoss_14
+      rect:
+        serializedVersion: 2
+        x: 299
+        y: 746
+        width: 68
+        height: 60
+      alignment: 9
+      pivot: {x: .5, y: .699999988}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: neonTigerBoss_15
+      rect:
+        serializedVersion: 2
+        x: 383
+        y: 744
+        width: 70
+        height: 44
+      alignment: 9
+      pivot: {x: .5, y: .800000012}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: neonTigerBoss_16
+      rect:
+        serializedVersion: 2
+        x: 466
+        y: 744
+        width: 66
+        height: 66
+      alignment: 9
+      pivot: {x: .5, y: .540000021}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: neonTigerBoss_17
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 668
+        width: 64
+        height: 48
+      alignment: 9
+      pivot: {x: .5, y: .730000019}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: neonTigerBoss_18
+      rect:
+        serializedVersion: 2
+        x: 68
+        y: 670
+        width: 65
+        height: 50
+      alignment: 9
+      pivot: {x: .5, y: .670000017}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: neonTigerBoss_19
+      rect:
+        serializedVersion: 2
+        x: 136
+        y: 670
+        width: 65
+        height: 58
+      alignment: 9
+      pivot: {x: .5, y: .579999983}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: neonTigerBoss_20
+      rect:
+        serializedVersion: 2
+        x: 203
+        y: 670
+        width: 60
+        height: 62
+      alignment: 9
+      pivot: {x: .5, y: .540000021}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: neonTigerBoss_21
+      rect:
+        serializedVersion: 2
+        x: 265
+        y: 670
+        width: 86
+        height: 42
+      alignment: 9
+      pivot: {x: .649999976, y: .795000017}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: neonTigerBoss_22
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 589
+        width: 56
+        height: 66
+      alignment: 9
+      pivot: {x: .5, y: .485000014}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: neonTigerBoss_23
+      rect:
+        serializedVersion: 2
+        x: 60
+        y: 589
+        width: 96
+        height: 64
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: neonTigerBoss_24
+      rect:
+        serializedVersion: 2
+        x: 158
+        y: 580
+        width: 86
+        height: 81
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: neonTigerBoss_25
+      rect:
+        serializedVersion: 2
+        x: 246
+        y: 587
+        width: 69
+        height: 66
+      alignment: 9
+      pivot: {x: .379000008, y: .507000029}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: neonTigerBoss_26
+      rect:
+        serializedVersion: 2
+        x: 317
+        y: 587
+        width: 70
+        height: 44
+      alignment: 9
+      pivot: {x: .5, y: .75999999}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: neonTigerBoss_27
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 519
+        width: 67
+        height: 46
+      alignment: 9
+      pivot: {x: .5, y: .699999988}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: neonTigerBoss_28
+      rect:
+        serializedVersion: 2
+        x: 71
+        y: 519
+        width: 59
+        height: 47
+      alignment: 9
+      pivot: {x: .460000008, y: .800000012}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: neonTigerBoss_29
+      rect:
+        serializedVersion: 2
+        x: 132
+        y: 519
+        width: 64
+        height: 47
+      alignment: 9
+      pivot: {x: .425000012, y: .800000012}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: neonTigerBoss_30
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 432
+        width: 50
+        height: 71
+      alignment: 9
+      pivot: {x: .165000007, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: neonTigerBoss_31
+      rect:
+        serializedVersion: 2
+        x: 54
+        y: 432
+        width: 60
+        height: 72
+      alignment: 9
+      pivot: {x: .305000007, y: .504999995}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: neonTigerBoss_32
+      rect:
+        serializedVersion: 2
+        x: 116
+        y: 435
+        width: 58
+        height: 69
+      alignment: 9
+      pivot: {x: .280000001, y: .485000014}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: neonTigerBoss_33
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 355
+        width: 68
+        height: 60
+      alignment: 9
+      pivot: {x: .100000001, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: neonTigerBoss_34
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 355
+        width: 67
+        height: 62
+      alignment: 9
+      pivot: {x: .144999996, y: .485000014}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: neonTigerBoss_35
+      rect:
+        serializedVersion: 2
+        x: 141
+        y: 355
+        width: 73
+        height: 55
+      alignment: 9
+      pivot: {x: .133000001, y: .546999991}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: neonTigerBoss_36
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 297
+        width: 65
+        height: 44
+      alignment: 9
+      pivot: {x: .5, y: .730000019}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: neonTigerBoss_37
+      rect:
+        serializedVersion: 2
+        x: 69
+        y: 297
+        width: 78
+        height: 39
+      alignment: 9
+      pivot: {x: .579999983, y: .819999993}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: neonTigerBoss_38
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 226
+        width: 65
+        height: 58
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: neonTigerBoss_39
+      rect:
+        serializedVersion: 2
+        x: 69
+        y: 226
+        width: 65
+        height: 50
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: neonTigerBoss_40
+      rect:
+        serializedVersion: 2
+        x: 136
+        y: 226
+        width: 65
+        height: 58
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: neonTigerBoss_41
+      rect:
+        serializedVersion: 2
+        x: 203
+        y: 226
+        width: 65
+        height: 50
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: neonTigerBoss_42
+      rect:
+        serializedVersion: 2
+        x: 271
+        y: 226
+        width: 65
+        height: 50
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: neonTigerBoss_43
+      rect:
+        serializedVersion: 2
+        x: 338
+        y: 226
+        width: 65
+        height: 58
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: neonTigerBoss_44
+      rect:
+        serializedVersion: 2
+        x: 405
+        y: 226
+        width: 65
+        height: 50
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: neonTigerBoss_45
+      rect:
+        serializedVersion: 2
+        x: 472
+        y: 226
+        width: 65
+        height: 58
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: neonTigerBoss_46
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 135
+        width: 93
+        height: 52
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: neonTigerBoss_47
+      rect:
+        serializedVersion: 2
+        x: 97
+        y: 135
+        width: 93
+        height: 77
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: neonTigerBoss_48
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 135
+        width: 65
+        height: 77
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: neonTigerBoss_49
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 69
+        width: 66
+        height: 55
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: neonTigerBoss_50
+      rect:
+        serializedVersion: 2
+        x: 70
+        y: 69
+        width: 66
+        height: 55
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: neonTigerBoss_51
+      rect:
+        serializedVersion: 2
+        x: 138
+        y: 69
+        width: 66
+        height: 55
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: neonTigerBoss_52
+      rect:
+        serializedVersion: 2
+        x: 206
+        y: 69
+        width: 66
+        height: 55
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: neonTigerBoss_53
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 2
+        width: 79
+        height: 56
+      alignment: 9
+      pivot: {x: .5, y: .725000024}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: neonTigerBoss_54
+      rect:
+        serializedVersion: 2
+        x: 94
+        y: 1
+        width: 79
+        height: 56
+      alignment: 9
+      pivot: {x: .5, y: .725000024}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: neonTigerBoss_55
+      rect:
+        serializedVersion: 2
+        x: 186
+        y: 5
+        width: 79
+        height: 56
+      alignment: 9
+      pivot: {x: .5, y: .725000024}
+      border: {x: 0, y: 0, z: 0, w: 0}
+  spritePackingTag: 
+  userData: 
