@@ -66,9 +66,11 @@
      <Compile Include="Assets\Scripts\EnemyScripts\SeaHorse\SeaHorseAI.cs" />
      <Compile Include="Assets\Scripts\EnemyScripts\SpinShot\SpinShotAI.cs" />
      <Compile Include="Assets\Scripts\EnemyScripts\SpinShot\SpinShotProjectile.cs" />
+     <Compile Include="Assets\Scripts\EnemyScripts\ToxicSeaHorse\ToxicSeaHorseAI.cs" />
      <Compile Include="Assets\Scripts\MeshSortingLayer.cs" />
      <Compile Include="Assets\Scripts\MovingPlatforms\FollowPath.cs" />
      <Compile Include="Assets\Scripts\MovingPlatforms\PlatformPathing.cs" />
+     <Compile Include="Assets\Scripts\Parabola.cs" />
      <None Include="Assets\Standard Assets (Mobile)\Shaders\Particle Shaders\Mobile Multiply Culled.shader" />
      <None Include="Assets\Standard Assets (Mobile)\Shaders\Miscellaneous Shaders\Mobile Background.shader" />
      <None Include="Assets\Standard Assets (Mobile)\Shaders\Vertex Colored Shaders\Mobile Transparent Vertex Color.shader" />
