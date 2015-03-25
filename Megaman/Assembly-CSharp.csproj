@@ -57,6 +57,7 @@
      <Compile Include="Assets\Scripts\CharacterScripts\WeaponsHandling.cs" />
      <Compile Include="Assets\Scripts\EnemyScripts\EnemySpawnPoint.cs" />
      <Compile Include="Assets\Scripts\EnemyScripts\ExplosionScript.cs" />
+     <Compile Include="Assets\Scripts\EnemyScripts\JellyFish\JellyFishAI.cs" />
      <Compile Include="Assets\Scripts\EnemyScripts\NeonTiger\BossSpawnScript.cs" />
      <Compile Include="Assets\Scripts\EnemyScripts\NeonTiger\NeonTigerAI.cs" />
      <Compile Include="Assets\Scripts\EnemyScripts\NeonTiger\NeonTigerProjectileAI.cs" />
