@@ -230,14 +230,20 @@ public class MegamanMovement : MonoBehaviour {
 	}
 
 	void OnTriggerEnter2D(Collider2D trigger){
-		if (trigger.gameObject.tag == "Enemy" && !CurrentlyInvulnerable) {
-			CurrentlyInvulnerable = true;
-            Health -= trigger.gameObject.GetComponentInParent<EnemySpawnPoint>().CollisionDamage;
-			StartCoroutine("InvulnerabilityFrames", trigger.GetComponentInParent<EnemySpawnPoint>().FacingRight);
-		}
-		else if(trigger.gameObject.tag == "SpinShotProjectile"){
-			SoundEffects.PlayOneShot (MegaManSoundClips [0]);
-		}
+
+        if (!CurrentlyInvulnerable)
+        {
+            if (trigger.gameObject.tag == "Enemy")
+            {
+                CurrentlyInvulnerable = true;
+                Health -= trigger.gameObject.GetComponentInParent<EnemySpawnPoint>().CollisionDamage;
+                StartCoroutine("InvulnerabilityFrames", trigger.GetComponentInParent<EnemySpawnPoint>().FacingRight);
+            }
+            else if (trigger.gameObject.tag == "SpinShotProjectile" || trigger.gameObject.tag == "AcidBall")
+            {
+                SoundEffects.PlayOneShot(MegaManSoundClips[0]);
+            }
+        }
 
 	}
 
@@ -247,11 +253,15 @@ public class MegamanMovement : MonoBehaviour {
 			rigidbody2D.gravityScale = 0;
 			anim.SetBool("OnLadder", OnLadder);
 		}
-		if (trigger.gameObject.tag == "Enemy" && !CurrentlyInvulnerable) {
-			CurrentlyInvulnerable = true;
-            Health -= trigger.gameObject.GetComponentInParent<EnemySpawnPoint>().CollisionDamage;
-			StartCoroutine("InvulnerabilityFrames", trigger.transform.parent.gameObject.GetComponent<EnemySpawnPoint>().FacingRight);
-		}
+        if (!CurrentlyInvulnerable)
+        {
+            if (trigger.gameObject.tag == "Enemy")
+            {
+                CurrentlyInvulnerable = true;
+                Health -= trigger.gameObject.GetComponentInParent<EnemySpawnPoint>().CollisionDamage;
+                StartCoroutine("InvulnerabilityFrames", trigger.transform.parent.gameObject.GetComponent<EnemySpawnPoint>().FacingRight);
+            }
+        }
 	}
 
 	void OnTriggerExit2D(Collider2D trigger){

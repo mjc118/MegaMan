@@ -17,7 +17,14 @@ public class SmoothFollowMegaMan : MonoBehaviour {
 		//if the Boss is Alive
 
 		if (GameObject.Find ("EnemySpawnPoints/Boss").GetComponent<EnemySpawnPoint> ().IsThisEnemyAlive) {
-			transform.position = Vector3.Lerp(transform.position,new Vector3(114.36f, 11.7f, -10f), Time.deltaTime * damping);	
+            if (Application.loadedLevelName == "NeonTigerStage")
+            {
+                transform.position = Vector3.Lerp(transform.position, new Vector3(114.36f, 11.7f, -10f), Time.deltaTime * damping);
+            }
+            else if (Application.loadedLevelName == "WaterStage")
+            {
+                transform.position = Vector3.Lerp(transform.position, new Vector3(75.8f, -15f, -10f), Time.deltaTime * damping);
+            }
 		}
 		else if(target.position.y > CameraLowerLimit && target.position.x > CameraLeftLimit){
 			Vector3 wantedPosition;

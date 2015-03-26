@@ -11,6 +11,7 @@ public class ToxicSeaHorseAI : MonoBehaviour {
     public float DeathAnimDuration;
     public float InvulnerabilityFrame;
     public bool CurrentlyInvulnerable = false;
+    public bool InvulnerabilityStage = false;
 
     public Transform GroundCheck;
     public bool OnGround;
@@ -94,6 +95,18 @@ public class ToxicSeaHorseAI : MonoBehaviour {
 
         if (!Dieing && !Spawning)
         {
+            if (!Jumping)
+            {
+                if (PlayerPos.position.x - transform.position.x < 0 && FacingRight)
+                {
+                    Flip();
+                }
+                else if (PlayerPos.position.x - transform.position.x > 0 && !FacingRight)
+                {
+                    Flip();
+                }
+            }
+
             if (Jumping)
             {
                 JumpTimeElapsed += Time.deltaTime;
@@ -120,14 +133,6 @@ public class ToxicSeaHorseAI : MonoBehaviour {
             {
                 Attacking = true;
 
-                if (PlayerPos.position.x - transform.position.x < 0 && FacingRight)
-                {
-                    Flip();
-                }
-                else if (PlayerPos.position.x - transform.position.x > 0 && !FacingRight)
-                {
-                    Flip();
-                }
 
                 if (Random.Range(1, 10) < 6)
                 {
@@ -135,8 +140,9 @@ public class ToxicSeaHorseAI : MonoBehaviour {
                 }
                 else
                 {
-                   
-                    CurrentlyInvulnerable = true;
+                    //needed since if a buster hit triggered the Invulnerability frames
+                    //Currently Invulnerable gets set to false early
+                    InvulnerabilityStage = true;
                     StartCoroutine("GoInvulnerable");
                 }
                 
@@ -153,7 +159,7 @@ public class ToxicSeaHorseAI : MonoBehaviour {
         //wait some time before deciding where to re-materialize
         yield return new WaitForSeconds(4f);
         //replace this with players x position
-        transform.position = new Vector3(transform.position.x - Random.Range(1, 10), transform.position.y, transform.position.z);
+        transform.position = new Vector3(PlayerPos.position.x, transform.position.y, transform.position.z);
         
         ToxicSeaHorseAnim.SetBool("ReturningFromInvulnerable", true);
         ToxicSeaHorseAnim.SetBool("GoingInvulnerable", false);
@@ -162,8 +168,10 @@ public class ToxicSeaHorseAI : MonoBehaviour {
         yield return new WaitForSeconds(2f);
         ToxicSeaHorseAnim.SetBool("ReturningFromInvulnerable", false);
         
-        CurrentlyInvulnerable = false;
         Invoke("DelaySettingAttackFalse", 1.5f);
+        yield return new WaitForSeconds(0.5f);
+        
+        InvulnerabilityStage = false;
     }
 
     IEnumerator InvulnerabilityFrames()
@@ -189,9 +197,8 @@ public class ToxicSeaHorseAI : MonoBehaviour {
             ToxicSeaHorseAnim.SetBool("Jumping", Jumping);
             JumpBegin = transform.position;
             //replace this with Player.Pos later
-            Vector3 Temp = transform.position;
-            Temp.x -= 1f;
-            JumpEnd = Temp;
+            JumpEnd = PlayerPos.position;
+            JumpEnd.y = -17.5f;
         }
         else//instaniate our projectile prefab
         {
@@ -288,8 +295,9 @@ public class ToxicSeaHorseAI : MonoBehaviour {
 
     void OnTriggerEnter2D(Collider2D trigger)
     {
-        if (!CurrentlyInvulnerable)
+        if (!CurrentlyInvulnerable && !InvulnerabilityStage)
         {
+            Debug.Log("Hit");
             if (trigger.gameObject.tag == "BusterShot")
             {
                 CurrentlyInvulnerable = true;

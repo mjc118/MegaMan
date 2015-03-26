@@ -87,7 +87,7 @@ public class LargeBusterShot : MonoBehaviour {
 
 	void OnTriggerEnter2D(Collider2D trigger)
 	{
-		if (trigger.gameObject.tag == "Enemy" || trigger.gameObject.tag == "AcidBall") 
+        if (trigger.gameObject.tag == "Enemy" || trigger.gameObject.tag == "AcidBall") 
 		{
             --Buster.CurrentShotsInPlay;
 			Destroy (gameObject);

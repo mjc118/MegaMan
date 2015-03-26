@@ -70,6 +70,12 @@ public class AcidBallType1AI : MonoBehaviour {
 
     void OnTriggerEnter2D(Collider2D trigger)
     {
+        if (trigger.gameObject.tag == "Player")
+        {
+            trigger.gameObject.GetComponent<MegamanMovement>().Health -= 2;
+            Destroy(gameObject);
+        } 
+
         if (trigger.gameObject.tag == "BusterShot")
         {
             Health -= 1f;
