@@ -19,8 +19,9 @@ public class Parabola : MonoBehaviour {
     
             if ( ProjectileTransform ) {
                 //Shows how to animate something following a parabola
-                objectT = Time.time % 1; //completes the parabola trip in one second
-                ProjectileTransform.position = SampleParabola( a, b, Height, objectT );
+                objectT = Time.time % 2; //completes the parabola trip in one second
+
+                ProjectileTransform.position = SampleParabola( a, b, Height, objectT/2 );
             }
         }
     }
@@ -66,13 +67,14 @@ public class Parabola : MonoBehaviour {
     /// </param>S
     Vector3 SampleParabola(Vector3 start, Vector3 end, float height, float t)
     {
+        
         float parabolicT = t * 2 - 1;
-        if (Mathf.Abs(start.y - end.y) < 0.1f)
+        if(true)//(Mathf.Abs(start.y - end.y) < 0.1f)
         {
             //start and end are roughly level, pretend they are - simpler solution with less steps
             Vector3 travelDirection = end - start;
-            Vector3 result = start + t * travelDirection;
-            result.y += (-parabolicT * parabolicT + 1) * height;
+            Vector3 result = (start + t * travelDirection);
+            result.y += ((-parabolicT * parabolicT) + 1) * height;
             return result;
         }
         else
