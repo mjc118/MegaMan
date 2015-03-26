@@ -55,10 +55,10 @@
      <Compile Include="Assets\Scripts\CharacterScripts\CheckpointDetection.cs" />
      <Compile Include="Assets\Scripts\CharacterScripts\MegamanMovement.cs" />
      <Compile Include="Assets\Scripts\CharacterScripts\WeaponsHandling.cs" />
+     <Compile Include="Assets\Scripts\EnemyScripts\BossSpawnScript.cs" />
      <Compile Include="Assets\Scripts\EnemyScripts\EnemySpawnPoint.cs" />
      <Compile Include="Assets\Scripts\EnemyScripts\ExplosionScript.cs" />
      <Compile Include="Assets\Scripts\EnemyScripts\JellyFish\JellyFishAI.cs" />
-     <Compile Include="Assets\Scripts\EnemyScripts\NeonTiger\BossSpawnScript.cs" />
      <Compile Include="Assets\Scripts\EnemyScripts\NeonTiger\NeonTigerAI.cs" />
      <Compile Include="Assets\Scripts\EnemyScripts\NeonTiger\NeonTigerProjectileAI.cs" />
      <Compile Include="Assets\Scripts\EnemyScripts\RockMan\RockManAI.cs" />
@@ -66,6 +66,7 @@
      <Compile Include="Assets\Scripts\EnemyScripts\SeaHorse\SeaHorseAI.cs" />
      <Compile Include="Assets\Scripts\EnemyScripts\SpinShot\SpinShotAI.cs" />
      <Compile Include="Assets\Scripts\EnemyScripts\SpinShot\SpinShotProjectile.cs" />
+     <Compile Include="Assets\Scripts\EnemyScripts\ToxicSeaHorse\AcidBallType1AI.cs" />
      <Compile Include="Assets\Scripts\EnemyScripts\ToxicSeaHorse\ToxicSeaHorseAI.cs" />
      <Compile Include="Assets\Scripts\MeshSortingLayer.cs" />
      <Compile Include="Assets\Scripts\MovingPlatforms\FollowPath.cs" />

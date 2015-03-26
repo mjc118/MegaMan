@@ -19,6 +19,7 @@ public class ToxicSeaHorseAI : MonoBehaviour {
     public bool FacingRight;
     bool Jumping = false;
     bool Attacking = false;
+    bool AttackIssued = false;//needed for attacks that are multiple iterations
 
     public bool Spawning = true;
 
@@ -27,18 +28,18 @@ public class ToxicSeaHorseAI : MonoBehaviour {
      * bosses jump animation
      */
     float objectT = 0; //timer for that object
-    public Vector3 JumpBegin, JumpEnd; //transforms that mark the start and end
+    Vector3 JumpBegin, JumpEnd; //VectorPositions that mark the start and end
     public float JumpHeight; //desired parabola height
-    Vector3 a, b; //Vector positions for start and end
     public float JumpTimeElapsed;//How many seconds into the current jump we are
     public float JumpDuration;//#seconds a jump takes to complete
+    int NumberOfJumps = 0; //need to do 3 by default
 
     Transform PlayerPos;
     public AudioClip[] SoundClips;
     public AudioSource SoundEffects;
     AudioSource MainAudio;
 
-    //public GameObject ToxicSeaHorseProjectilePrefab;
+    public GameObject[] ToxicSeaHorseProjectilePrefab;
     public GameObject[] DeathExplosions;
 
     void Awake()
@@ -95,9 +96,6 @@ public class ToxicSeaHorseAI : MonoBehaviour {
         {
             if (Jumping)
             {
-                a = JumpBegin; //Get vectors from the transforms
-                b = JumpEnd;
-
                 JumpTimeElapsed += Time.deltaTime;
                 objectT = JumpTimeElapsed % JumpDuration; //completes the parabola trip in JumpDuration Time
                 
@@ -105,40 +103,133 @@ public class ToxicSeaHorseAI : MonoBehaviour {
                 {
                     Jumping = false;
                     ToxicSeaHorseAnim.SetBool("Jumping", Jumping);
-                    transform.position = SampleParabola(a, b, JumpHeight, 1);
+                    transform.position = SampleParabola(JumpBegin, JumpEnd, JumpHeight, 1);
                 }
                 else
                 {
-                    transform.position = SampleParabola(a, b, JumpHeight, objectT / JumpDuration);
+                    transform.position = SampleParabola(JumpBegin, JumpEnd, JumpHeight, objectT / JumpDuration);
                 }
-                
+            }
+
+            if(Attacking && !Jumping && !AttackIssued && NumberOfJumps > 0 &&  NumberOfJumps < 4){
+                AttackIssued = true;
+                Invoke("JumpAttack", 1f);
             }
 
             if (!Attacking && !Jumping)
             {
-                Jumping = true;
-                JumpTimeElapsed = 0;
-                ToxicSeaHorseAnim.SetBool("Jumping", Jumping);
                 Attacking = true;
-                JumpBegin = transform.position;
-                Vector3 Temp = transform.position;
-                Temp.x -= 5f;
-                JumpEnd = Temp;
-                
-            }
 
-            if (PlayerPos.position.x - transform.position.x < 0 && FacingRight)
-            {
-                Flip();
-            }
-            else if (PlayerPos.position.x - transform.position.x > 0 && !FacingRight)
-            {
-                Flip();
+                if (PlayerPos.position.x - transform.position.x < 0 && FacingRight)
+                {
+                    Flip();
+                }
+                else if (PlayerPos.position.x - transform.position.x > 0 && !FacingRight)
+                {
+                    Flip();
+                }
+
+                if (Random.Range(1, 10) < 6)
+                {
+                    JumpAttack();
+                }
+                else
+                {
+                   
+                    CurrentlyInvulnerable = true;
+                    StartCoroutine("GoInvulnerable");
+                }
+                
             }
         }
 
         transform.parent.gameObject.GetComponent<EnemySpawnPoint>().FacingRight = FacingRight;
 	}
+
+    IEnumerator GoInvulnerable()
+    {
+        ToxicSeaHorseAnim.SetBool("GoingInvulnerable", true);
+        
+        //wait some time before deciding where to re-materialize
+        yield return new WaitForSeconds(4f);
+        //replace this with players x position
+        transform.position = new Vector3(transform.position.x - Random.Range(1, 10), transform.position.y, transform.position.z);
+        
+        ToxicSeaHorseAnim.SetBool("ReturningFromInvulnerable", true);
+        ToxicSeaHorseAnim.SetBool("GoingInvulnerable", false);
+        
+        //wait enough time for the animation to finish
+        yield return new WaitForSeconds(2f);
+        ToxicSeaHorseAnim.SetBool("ReturningFromInvulnerable", false);
+        
+        CurrentlyInvulnerable = false;
+        Invoke("DelaySettingAttackFalse", 1.5f);
+    }
+
+    IEnumerator InvulnerabilityFrames()
+    {
+        float InitialTime = InvulnerabilityFrame;
+
+        while (InitialTime > 0)
+        {
+            InitialTime -= Time.deltaTime;
+            yield return 0;
+        }
+
+        CurrentlyInvulnerable = false;
+    }
+
+    void JumpAttack()
+    {
+        if (NumberOfJumps < 3)
+        {
+            Jumping = true;
+            ++NumberOfJumps;
+            JumpTimeElapsed = 0;
+            ToxicSeaHorseAnim.SetBool("Jumping", Jumping);
+            JumpBegin = transform.position;
+            //replace this with Player.Pos later
+            Vector3 Temp = transform.position;
+            Temp.x -= 1f;
+            JumpEnd = Temp;
+        }
+        else//instaniate our projectile prefab
+        {
+            //Reset #Jumps back to it's default for it's next use
+            NumberOfJumps = 0;
+
+            Vector3 ShotPos;
+            GameObject Projectile;
+            NumberOfJumps = 0;
+            ToxicSeaHorseAnim.SetBool("MakingProjectile1", true);
+
+            if (FacingRight)//fire it to the right
+            {
+                ShotPos = new Vector3(transform.position.x + 0.2f, transform.position.y - 0.25f, transform.position.z);
+                Projectile = Instantiate(ToxicSeaHorseProjectilePrefab[0], ShotPos, Quaternion.identity) as GameObject;
+                Projectile.GetComponent<AcidBallType1AI>().InitialDirectionIsR = true;
+            }
+            else
+            {
+                ShotPos = new Vector3(transform.position.x - 0.2f, transform.position.y - 0.25f, transform.position.z);
+                Projectile = Instantiate(ToxicSeaHorseProjectilePrefab[0], ShotPos, Quaternion.identity) as GameObject;
+                Projectile.GetComponent<AcidBallType1AI>().InitialDirectionIsR = false;
+            }
+            Invoke("DelaySettingProjectileFalse", 1f);
+            Invoke("DelaySettingAttackFalse", 1.5f);
+        }
+        AttackIssued = false;
+    }
+
+    public void DelaySettingProjectileFalse()
+    {
+        ToxicSeaHorseAnim.SetBool("MakingProjectile1", false);
+    }
+
+    public void DelaySettingAttackFalse()
+    {
+        Attacking = false;
+    }
 
     public void MegamanDied()
     {
