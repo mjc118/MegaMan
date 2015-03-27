@@ -69,7 +69,7 @@ public class Parabola : MonoBehaviour {
     {
         
         float parabolicT = t * 2 - 1;
-        if(true)//(Mathf.Abs(start.y - end.y) < 0.1f)
+        if(Mathf.Abs(start.y - end.y) < 0.1f)
         {
             //start and end are roughly level, pretend they are - simpler solution with less steps
             Vector3 travelDirection = end - start;
@@ -92,4 +92,5 @@ public class Parabola : MonoBehaviour {
     }
     #endregion
 
-}*/
+}
+*/

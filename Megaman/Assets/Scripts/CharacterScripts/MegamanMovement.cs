@@ -15,6 +15,11 @@ public class MegamanMovement : MonoBehaviour {
 	private float verticalMovement;
 
 	public float maxSpeed;
+    public float JumpSpeed;
+    public float JumpDuration;//const
+    float jmpDuration;//modified
+    bool JumpOnCooldown = false;
+    
 	public bool FacingRight = true;
 
 	Animator anim;
@@ -30,8 +35,7 @@ public class MegamanMovement : MonoBehaviour {
 	float groundRadius = 0.2f;
 	public LayerMask WhatIsGround;
 	public LayerMask WhatIsLadder;
-	public float JumpForce = 300f;
-    public float JumpPushForce;
+    
 
 	//for dashing
 	public Vector2 dashSpeed;
@@ -84,6 +88,7 @@ public class MegamanMovement : MonoBehaviour {
 		anim.SetFloat ("vSpeed", rigidbody2D.velocity.y);
 
 		float move = Input.GetAxis ("Horizontal");
+
 		verticalMovement = Input.GetAxis ("Vertical");
 
 		if (!CurrentlyDashing && !Respawning && !IsBossSpawning) { //don't allow movement while we are dashing or boss is spawning
@@ -102,13 +107,6 @@ public class MegamanMovement : MonoBehaviour {
 						} else if (move < 0 && FacingRight) {
 								Flip ();
 								dashSpeed.x *= -1;
-						}
-						//control the force that pushes you off a wall based on your direction
-						if(!FacingRight && onWall){
-							JumpPushForce = 400f;
-						}
-						else{
-							JumpPushForce = -400f;
 						}
 				}
 	}
@@ -145,21 +143,84 @@ public class MegamanMovement : MonoBehaviour {
 
 			if ((OnGround || TouchingLadder) && Input.GetButtonDown ("Jump")) {
 				anim.SetBool ("Ground", false);
+                
 				if(OnLadder){
 					OnLadder = false;
 					anim.SetBool("OnLadder", OnLadder);
-					Invoke ("Jump", 0.1f);
-				}
-				else{
-					Jump ();
+                    rigidbody2D.velocity = new Vector2(rigidbody2D.velocity.x, JumpSpeed);
+                    rigidbody2D.gravityScale = 1f;
+                    jmpDuration = 0f;
 				}
 			}
 
-			if (onWall && !OnGround && !OnLadder && Input.GetButtonDown ("Jump")) {
-				WallJump ();
-			}
+            if (Input.GetButton("Jump") && (jmpDuration < JumpDuration / 1000))
+            {
+                //jmpDuration += Time.deltaTime;
+                
+                if ((onWall || OnGround) && !OnLadder)
+                {
+
+                    float horizontal = Input.GetAxis("Horizontal");
+
+                    bool wallHit = false;
+                    int wallHitDirection = 0;
+                    if (onWall && horizontal > 0 && FacingRight)
+                    {
+                        wallHit = true;
+                        wallHitDirection = -1;
+                    }
+                    else if(onWall && horizontal < 0 && !FacingRight)
+                    {
+                        wallHit = true;
+                        wallHitDirection = 1;
+                    }
+
+                    if (!wallHit)
+                    {
+                        if (OnGround)
+                        {
+                            rigidbody2D.velocity = new Vector2(rigidbody2D.velocity.x, JumpSpeed);
+                            //jmpDuration = 0f;
+                        }
+                    }
+                    else
+                    {
+                        rigidbody2D.velocity = new Vector2(JumpSpeed * wallHitDirection, JumpSpeed);
+                        //jmpDuration = 0;
+                    }
+
+                }
+                else
+                {
+                    jmpDuration += Time.deltaTime;
+                    Debug.Log(jmpDuration);
+                    if (jmpDuration < JumpDuration / 1000)
+                    {
+                        rigidbody2D.velocity = new Vector2(rigidbody2D.velocity.x, JumpSpeed);
+                    }
+                }
+
+                if (jmpDuration > JumpDuration / 1000)
+                {
+                    JumpOnCooldown = true;
+                    Invoke("JumpCooldown", 0.5f);
+                }
+            }
+            else if(!JumpOnCooldown)
+            {
+                if (jmpDuration > 0)
+                {
+                    jmpDuration -= Time.deltaTime;
+                }
+            }
+            
 		}
 	}
+
+    void JumpCooldown()
+    {
+        JumpOnCooldown = false;
+    }
 
 	IEnumerator InitialSpawn(){
 		Respawning = true;
@@ -196,20 +257,6 @@ public class MegamanMovement : MonoBehaviour {
 		anim.SetBool ("CurrentlyDashing", CurrentlyDashing);
 		HeadBoxCollider.enabled = true;
 		DashCircleCollider.radius = Temp;
-	}
-
-	void WallJump()
-	{
-		rigidbody2D.AddForce (new Vector2 (JumpPushForce, 0));
-		rigidbody2D.AddForce (new Vector2 (0, JumpForce));
-		
-	}
-
-	void Jump(){
-		if(!InWater){
-			rigidbody2D.gravityScale = 1f;
-		}
-		rigidbody2D.AddForce (new Vector2 (0, JumpForce));
 	}
 
 	void OnCollisionEnter2D(Collision2D collide)
