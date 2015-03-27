@@ -109,9 +109,7 @@ public class NeonTigerProjectileAI : MonoBehaviour {
 		if (trigger.gameObject.tag == "Player") {
 			if(!trigger.gameObject.GetComponent<MegamanMovement>().CurrentlyInvulnerable){
 				trigger.gameObject.GetComponent<MegamanMovement>().CurrentlyInvulnerable = true;
-				//weird bug in unity, this trigger is called and the trigger for touching the boss(parent object)
-				//touching boss causes 4 damage this should cause 1 but if i -=1 i take 5, so += 3 to jury rig it
-				trigger.gameObject.GetComponent<MegamanMovement>().Health += 3;
+				trigger.gameObject.GetComponent<MegamanMovement>().Health -= 1;
 				trigger.gameObject.GetComponent<MegamanMovement>().StartCoroutine("InvulnerabilityFrames", transform.parent.gameObject.GetComponent<NeonTigerAI>().FacingRight);
 			}
 			Destroy (gameObject);

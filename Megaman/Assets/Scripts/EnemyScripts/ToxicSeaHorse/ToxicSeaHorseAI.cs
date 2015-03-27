@@ -133,8 +133,12 @@ public class ToxicSeaHorseAI : MonoBehaviour {
             {
                 Attacking = true;
 
-
-                if (Random.Range(1, 10) < 6)
+                int AttackRoll = Random.Range(1,11);
+                if (AttackRoll < 3)
+                {
+                    FireAcidBallType1();
+                }
+                else if (AttackRoll < 8)
                 {
                     JumpAttack();
                 }
@@ -187,6 +191,28 @@ public class ToxicSeaHorseAI : MonoBehaviour {
         CurrentlyInvulnerable = false;
     }
 
+    void FireAcidBallType1()
+    {
+        Vector3 ShotPos;
+        GameObject Projectile;
+        ToxicSeaHorseAnim.SetBool("MakingProjectile1", true);
+
+        if (FacingRight)//fire it to the right
+        {
+            ShotPos = new Vector3(transform.position.x + 0.2f, transform.position.y - 0.25f, transform.position.z);
+            Projectile = Instantiate(ToxicSeaHorseProjectilePrefab[0], ShotPos, Quaternion.identity) as GameObject;
+            Projectile.GetComponent<AcidBallType1AI>().InitialDirectionIsR = true;
+        }
+        else
+        {
+            ShotPos = new Vector3(transform.position.x - 0.2f, transform.position.y - 0.25f, transform.position.z);
+            Projectile = Instantiate(ToxicSeaHorseProjectilePrefab[0], ShotPos, Quaternion.identity) as GameObject;
+            Projectile.GetComponent<AcidBallType1AI>().InitialDirectionIsR = false;
+        }
+        Invoke("DelaySettingProjectileFalse", 1f);
+        Invoke("DelaySettingAttackFalse", 1.5f);
+    }
+
     void JumpAttack()
     {
         if (NumberOfJumps < 3)
@@ -207,7 +233,6 @@ public class ToxicSeaHorseAI : MonoBehaviour {
 
             Vector3 ShotPos;
             GameObject Projectile;
-            NumberOfJumps = 0;
             ToxicSeaHorseAnim.SetBool("MakingProjectile1", true);
 
             if (FacingRight)//fire it to the right
@@ -297,7 +322,6 @@ public class ToxicSeaHorseAI : MonoBehaviour {
     {
         if (!CurrentlyInvulnerable && !InvulnerabilityStage)
         {
-            Debug.Log("Hit");
             if (trigger.gameObject.tag == "BusterShot")
             {
                 CurrentlyInvulnerable = true;

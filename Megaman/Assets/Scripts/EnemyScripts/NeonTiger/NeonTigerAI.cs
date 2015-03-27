@@ -107,7 +107,7 @@ public class NeonTigerAI : MonoBehaviour {
             if (SlashAttacking)
             {
                 float DistanceFromTarget = Mathf.Abs(transform.position.x - PlayerXPosition);
-                Debug.Log(DistanceFromTarget);
+               // Debug.Log(DistanceFromTarget);
 
                 OnGround = false;
                 NeonTigerAnim.SetBool("OnGround", OnGround);
@@ -185,7 +185,7 @@ public class NeonTigerAI : MonoBehaviour {
                 transform.Translate(DirectionTranslation);
 
             }
-            else if (!OnWall && OnGround)
+            else if (!OnWall && OnGround || OnGround && !Attacking)
             {
                 if (JumpingOffWall)
                 {
@@ -202,13 +202,14 @@ public class NeonTigerAI : MonoBehaviour {
                 {
                     Flip();
                 }
+                
             }
 
             if (!Spawning && !Attacking && !JumpingToWall && !JumpingOffWall && !Dieing && !SlashAttacking)
             {
                 Attacking = true;
 
-                AttackRolling(Random.Range(1, 10));
+                AttackRolling(Random.Range(1, 11));
             }
         }
 		transform.parent.gameObject.GetComponent<EnemySpawnPoint> ().FacingRight = FacingRight;

@@ -72,7 +72,12 @@ public class AcidBallType1AI : MonoBehaviour {
     {
         if (trigger.gameObject.tag == "Player")
         {
-            trigger.gameObject.GetComponent<MegamanMovement>().Health -= 2;
+            if (!trigger.gameObject.GetComponent<MegamanMovement>().CurrentlyInvulnerable)
+            {
+                trigger.gameObject.GetComponent<MegamanMovement>().CurrentlyInvulnerable = true;
+                trigger.gameObject.GetComponent<MegamanMovement>().Health -= 2;
+                trigger.gameObject.GetComponent<MegamanMovement>().StartCoroutine("InvulnerabilityFrames", PrevMoveDirectionIsR);
+            }
             Destroy(gameObject);
         } 
 
