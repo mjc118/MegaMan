@@ -65,7 +65,7 @@ public class JellyFishAI : MonoBehaviour {
                     transform.position = Vector3.MoveTowards(transform.position, PlayerPos.position, Time.deltaTime * MoveSpeed);
                 }
             }
-            else if (!Attacking)
+            else if (!Attacking && DistanceFromPlayer < 15f)
             {
                 transform.position = Vector3.MoveTowards(transform.position, PlayerPos.position, Time.deltaTime * MoveSpeed);
             }
