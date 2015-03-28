@@ -5,6 +5,8 @@ Project("{7AE7C286-D799-A72D-61D8-D5FB3769ED65}") = "Megaman", "Assembly-CSharp-
 EndProject
 Project("{7AE7C286-D799-A72D-61D8-D5FB3769ED65}") = "Megaman", "Assembly-CSharp-vs.csproj", "{3000EDC3-E9B6-AFE3-CCD6-F7B8312AA6CF}"
 EndProject
+Project("{7AE7C286-D799-A72D-61D8-D5FB3769ED65}") = "Megaman", "Assembly-CSharp-Editor-vs.csproj", "{3FE52DFB-76D4-8C3F-7BC9-99CF5D39913A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -19,11 +21,15 @@ Global
 		{3000EDC3-E9B6-AFE3-CCD6-F7B8312AA6CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3000EDC3-E9B6-AFE3-CCD6-F7B8312AA6CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3000EDC3-E9B6-AFE3-CCD6-F7B8312AA6CF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3FE52DFB-76D4-8C3F-7BC9-99CF5D39913A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3FE52DFB-76D4-8C3F-7BC9-99CF5D39913A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3FE52DFB-76D4-8C3F-7BC9-99CF5D39913A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3FE52DFB-76D4-8C3F-7BC9-99CF5D39913A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
-																																																																																																																																																															GlobalSection(MonoDevelopProperties) = preSolution
+																																																																																																																																																																																				GlobalSection(MonoDevelopProperties) = preSolution
 		StartupItem = Assembly-CSharp.csproj
 		Policies = $0
 		$0.TextStylePolicy = $1
