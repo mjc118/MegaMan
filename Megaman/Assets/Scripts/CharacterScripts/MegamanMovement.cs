@@ -133,6 +133,10 @@ public class MegamanMovement : MonoBehaviour {
             {
                 IsBossSpawning = GameObject.Find("EnemySpawnPoints/Boss").GetComponentInChildren<ToxicSeaHorseAI>().Spawning;
             }
+            else if (Application.loadedLevelName == "TunnelRhinoStage")
+            {
+                //IsBossSpawning = GameObject.Find("EnemySpawnPoints/Boss").GetComponentInChildren<ToxicSeaHorseAI>().Spawning;
+            }
             //else if(){} fill in our other levels
         }
 
@@ -378,6 +382,10 @@ public class MegamanMovement : MonoBehaviour {
                 else if (Application.loadedLevelName == "WaterStage")
                 {
                     GameObject.Find("EnemySpawnPoints/Boss").GetComponentInChildren<ToxicSeaHorseAI>().MegamanDied();
+                }
+                else if (Application.loadedLevelName == "TunnelRhinoStage")
+                {
+                    //GameObject.Find("EnemySpawnPoints/Boss").GetComponentInChildren<ToxicSeaHorseAI>().MegamanDied();
                 }
                 //else if(){} fill in our other levels
 			}
