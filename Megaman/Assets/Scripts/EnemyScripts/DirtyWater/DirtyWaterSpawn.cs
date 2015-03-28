@@ -13,7 +13,7 @@ public class DirtyWaterSpawn : MonoBehaviour {
         if(!AmIAlive && !Spawning){
             Spawning = true;
             AmIAlive = true;
-            Invoke("Spawn", 1.5f);
+            Invoke("Spawn", 1f);
         }
 	}
 

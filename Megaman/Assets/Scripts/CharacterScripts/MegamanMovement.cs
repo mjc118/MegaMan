@@ -278,6 +278,11 @@ public class MegamanMovement : MonoBehaviour {
 
 	void OnTriggerEnter2D(Collider2D trigger){
 
+        if (trigger.tag == "Spikes")
+        {
+            StartCoroutine("Death");
+        }
+
         if (!CurrentlyInvulnerable)
         {
             if (trigger.gameObject.tag == "Enemy")

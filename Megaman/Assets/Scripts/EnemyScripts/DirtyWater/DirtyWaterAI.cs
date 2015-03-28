@@ -31,7 +31,7 @@ public class DirtyWaterAI : MonoBehaviour {
             if (OnGround)
             {
                 DestroyingSelf = true;
-                Invoke("DestroySelf", 1f);
+                Invoke("DestroySelf", 1.5f);
                 DirtyWaterAnim.SetBool("HitGround", OnGround);
             }
             else if (!Spawning)
