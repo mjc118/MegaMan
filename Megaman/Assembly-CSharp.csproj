@@ -56,6 +56,9 @@
      <Compile Include="Assets\Scripts\CharacterScripts\MegamanMovement.cs" />
      <Compile Include="Assets\Scripts\CharacterScripts\WeaponsHandling.cs" />
      <Compile Include="Assets\Scripts\EnemyScripts\BossSpawnScript.cs" />
+     <Compile Include="Assets\Scripts\EnemyScripts\ConveyorBeltAI.cs" />
+     <Compile Include="Assets\Scripts\EnemyScripts\DirtyWater\DirtyWaterAI.cs" />
+     <Compile Include="Assets\Scripts\EnemyScripts\DirtyWater\DirtyWaterSpawn.cs" />
      <Compile Include="Assets\Scripts\EnemyScripts\EnemySpawnPoint.cs" />
      <Compile Include="Assets\Scripts\EnemyScripts\ExplosionScript.cs" />
      <Compile Include="Assets\Scripts\EnemyScripts\JellyFish\JellyFishAI.cs" />
