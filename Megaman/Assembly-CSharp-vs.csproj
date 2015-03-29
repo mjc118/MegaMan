@@ -64,6 +64,8 @@
      <Compile Include="Assets\Scripts\EnemyScripts\EnemySpawnPoint.cs" />
      <Compile Include="Assets\Scripts\EnemyScripts\ExplosionScript.cs" />
      <Compile Include="Assets\Scripts\EnemyScripts\JellyFish\JellyFishAI.cs" />
+     <Compile Include="Assets\Scripts\EnemyScripts\Miner\AxeAI.cs" />
+     <Compile Include="Assets\Scripts\EnemyScripts\Miner\MinerAI.cs" />
      <Compile Include="Assets\Scripts\EnemyScripts\NeonTiger\NeonTigerAI.cs" />
      <Compile Include="Assets\Scripts\EnemyScripts\NeonTiger\NeonTigerProjectileAI.cs" />
      <Compile Include="Assets\Scripts\EnemyScripts\RockMan\RockManAI.cs" />
