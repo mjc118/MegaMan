@@ -25,6 +25,10 @@ public class SmoothFollowMegaMan : MonoBehaviour {
             {
                 transform.position = Vector3.Lerp(transform.position, new Vector3(75.8f, -15f, -10f), Time.deltaTime * damping);
             }
+            else if (Application.loadedLevelName == "TunnelRhinoStage")
+            {
+                transform.position = Vector3.Lerp(transform.position, new Vector3(32.8f, 17.7f, -10f), Time.deltaTime * damping);
+            }
 		}
 		else if(target.position.y > CameraLowerLimit && target.position.x > CameraLeftLimit){
 			Vector3 wantedPosition;
