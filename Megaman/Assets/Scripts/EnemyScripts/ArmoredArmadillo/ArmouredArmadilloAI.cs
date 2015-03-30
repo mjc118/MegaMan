@@ -196,7 +196,7 @@ public class ArmouredArmadilloAI : MonoBehaviour {
 
         while (transform.position != TargetPosition)
         {
-            transform.position = Vector3.MoveTowards(transform.position, TargetPosition, Time.deltaTime * 10f);
+            transform.position = Vector3.MoveTowards(transform.position, TargetPosition, Time.deltaTime * 8f);
             //transform.Translate(Vector3.down * 0.01f);
             yield return 0;
         }
