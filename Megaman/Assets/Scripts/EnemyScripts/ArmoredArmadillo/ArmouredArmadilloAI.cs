@@ -25,6 +25,7 @@ public class ArmouredArmadilloAI : MonoBehaviour {
     public float RollSpeed;
 
     bool Rolling = false;
+    bool InitialRollTowardsPlayer = true;//makes the initial direction be left or right towards player
     float GroundYPosition;
     int CurrentWallHits = 0;
     int MaxWallHits;
@@ -42,6 +43,8 @@ public class ArmouredArmadilloAI : MonoBehaviour {
     float VerticalPull = 5;
     //effects how much our Roll is pulled upward or downard vs left or right
     float HorizontalPull = 10;
+
+    int MaxProjectilesToFire;
 
     Transform PlayerPos;
     public AudioClip[] SoundClips;
@@ -111,6 +114,18 @@ public class ArmouredArmadilloAI : MonoBehaviour {
                     Rolling = false;
                     StartCoroutine("ExitRoll");
                 }
+                else if (InitialRollTowardsPlayer)
+                {
+                    if (CurrentDirectionIsLeft)
+                    {
+                        DirectionTranslation = ((Vector3.left * RollSpeed)/10);
+                    }
+                    else
+                    {
+                        DirectionTranslation = ((Vector3.right * RollSpeed)/10);
+                    }
+                    transform.Translate(DirectionTranslation);
+                }
                 else
                 {
 
@@ -152,22 +167,70 @@ public class ArmouredArmadilloAI : MonoBehaviour {
             {
                 Attacking = true;
                 int AttackRoll = Random.Range(0, 11);
+                Debug.Log(AttackRoll);
 
-                if (true)//AttackRoll < 5)
+                if (AttackRoll < 5)
                 {
                     if(FacingRight){ CurrentDirectionIsLeft = false; }
                     else{CurrentDirectionIsLeft = true;}
 
+                    InitialRollTowardsPlayer = true;
                     CurrentDirectionIsUp = true;
 
                     CurrentWallHits = 0;
                     MaxWallHits = Random.Range(7, 11);
                     StartCoroutine("EnterRoll");
                 }
+                else if(AttackRoll < 8)//Firing Projectiles
+                {
+                    MaxProjectilesToFire = Random.Range(3, 7);
+                    StartCoroutine("FireProjectiles");
+                }
+                else { Attacking = false; }
             }
         }
         transform.parent.gameObject.GetComponent<EnemySpawnPoint>().FacingRight = FacingRight;
 	}
+
+    IEnumerator FireProjectiles()
+    {
+        Vector3 ShotPos;
+        GameObject Projectile;
+        int CurrentProjectilesFired = 0;
+        bool CurrentlyFiring = false;
+        while (CurrentProjectilesFired < MaxProjectilesToFire)
+        {
+            if (!CurrentlyFiring)
+            {
+                ArmadilloAnim.SetBool("FiringProjectile", true);
+                CurrentlyFiring = true;
+                yield return new WaitForSeconds(0.25f);
+                ++CurrentProjectilesFired;
+                if (FacingRight)
+                {
+                    ShotPos = new Vector3(transform.position.x + 0.2f, transform.position.y + 0.2f, transform.position.z);
+                    Projectile = Instantiate(ArmadilloProjectilePrefab[0], ShotPos, Quaternion.identity) as GameObject;
+                    Projectile.transform.parent = this.transform;
+                    Projectile.GetComponent<ArmadilloShot>().SetShotNumber(1);
+                }
+                else 
+                {
+                    ShotPos = new Vector3(transform.position.x - 0.2f, transform.position.y + 0.2f, transform.position.z);
+                    Projectile = Instantiate(ArmadilloProjectilePrefab[0], ShotPos, Quaternion.identity) as GameObject;
+                    Projectile.transform.parent = this.transform;
+                    Projectile.GetComponent<ArmadilloShot>().SetShotNumber(2);
+                }
+
+                yield return new WaitForSeconds(0.75f);
+                ArmadilloAnim.SetBool("FiringProjectile", false);
+                yield return new WaitForSeconds(0.25f);
+               
+                CurrentlyFiring = false;
+            }
+        }
+        Invoke("DelaySettingAttackFalse", 1.5f);
+        yield return 0;
+    }
 
     IEnumerator EnterRoll()
     {
@@ -315,6 +378,7 @@ public class ArmouredArmadilloAI : MonoBehaviour {
 
             if (HitSomething)
             {
+                InitialRollTowardsPlayer = false;
                 ++CurrentWallHits;
                 //VerticalPull = Random.Range(15, 26);
                 VerticalPull = Random.Range(35, 41);

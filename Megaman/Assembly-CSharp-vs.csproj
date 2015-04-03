@@ -55,6 +55,7 @@
      <Compile Include="Assets\Scripts\CharacterScripts\CheckpointDetection.cs" />
      <Compile Include="Assets\Scripts\CharacterScripts\MegamanMovement.cs" />
      <Compile Include="Assets\Scripts\CharacterScripts\WeaponsHandling.cs" />
+     <Compile Include="Assets\Scripts\EnemyScripts\ArmoredArmadillo\ArmadilloShot.cs" />
      <Compile Include="Assets\Scripts\EnemyScripts\ArmoredArmadillo\ArmouredArmadilloAI.cs" />
      <Compile Include="Assets\Scripts\EnemyScripts\Bat\BatAI.cs" />
      <Compile Include="Assets\Scripts\EnemyScripts\BossSpawnScript.cs" />

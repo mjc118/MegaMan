@@ -197,7 +197,7 @@ public class MegamanMovement : MonoBehaviour {
                 else
                 {
                     jmpDuration += Time.deltaTime;
-                    Debug.Log(jmpDuration);
+                    //Debug.Log(jmpDuration);
                     if (jmpDuration < JumpDuration / 1000)
                     {
                         rigidbody2D.velocity = new Vector2(rigidbody2D.velocity.x, JumpSpeed);
