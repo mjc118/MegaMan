@@ -19,6 +19,5 @@ F:\Mike\Documents\GitHub\MegaMan\Megaman\Temp\bin\Debug\Mono.Cecil.dll
 F:\Mike\Documents\GitHub\MegaMan\Megaman\Temp\bin\Debug\nunit.framework.dll
 F:\Mike\Documents\GitHub\MegaMan\Megaman\Temp\bin\Debug\Unity.DataContract.dll
 F:\Mike\Documents\GitHub\MegaMan\Megaman\Temp\bin\Debug\ICSharpCode.NRefactory.dll
-F:\Mike\Documents\GitHub\MegaMan\Megaman\obj\Debug\Assembly-CSharp-firstpass-vs.csprojResolveAssemblyReference.cache
 F:\Mike\Documents\GitHub\MegaMan\Megaman\obj\Debug\Assembly-CSharp-firstpass.dll
 F:\Mike\Documents\GitHub\MegaMan\Megaman\obj\Debug\Assembly-CSharp-firstpass.pdb

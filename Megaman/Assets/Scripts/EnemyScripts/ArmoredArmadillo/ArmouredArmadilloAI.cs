@@ -46,6 +46,11 @@ public class ArmouredArmadilloAI : MonoBehaviour {
 
     int MaxProjectilesToFire;
 
+    float ArmorUpDuration;
+    bool PerformDeltaAttack = false;//if we are hit by a charged shot while our armor is raised
+    public float DeltaAttackShotSpeed;
+    float CurrentArmorTimeElapsed;
+
     Transform PlayerPos;
     public AudioClip[] SoundClips;
     public AudioSource SoundEffects;
@@ -166,10 +171,16 @@ public class ArmouredArmadilloAI : MonoBehaviour {
             if (!Attacking)
             {
                 Attacking = true;
-                int AttackRoll = Random.Range(0, 11);
+                int AttackRoll = Random.Range(0, 10);
                 Debug.Log(AttackRoll);
 
-                if (AttackRoll < 5)
+                if (Health < 20 && AttackRoll > 7)
+                {
+                    ArmorUpDuration = Random.Range(1, 2);
+                    ArmorRaised = true;
+                    StartCoroutine("ArmorUp");
+                }
+                else if (AttackRoll < 6)
                 {
                     if(FacingRight){ CurrentDirectionIsLeft = false; }
                     else{CurrentDirectionIsLeft = true;}
@@ -178,19 +189,62 @@ public class ArmouredArmadilloAI : MonoBehaviour {
                     CurrentDirectionIsUp = true;
 
                     CurrentWallHits = 0;
-                    MaxWallHits = Random.Range(7, 11);
+                    MaxWallHits = Random.Range(15, 20);
                     StartCoroutine("EnterRoll");
                 }
-                else if(AttackRoll < 8)//Firing Projectiles
+                else//Firing Projectiles
                 {
                     MaxProjectilesToFire = Random.Range(3, 7);
                     StartCoroutine("FireProjectiles");
                 }
-                else { Attacking = false; }
             }
         }
         transform.parent.gameObject.GetComponent<EnemySpawnPoint>().FacingRight = FacingRight;
 	}
+
+    IEnumerator ArmorUp()
+    {
+        Debug.Log(Time.time);
+        CurrentArmorTimeElapsed = 0;
+        ArmadilloAnim.SetBool("ArmorUp", true);
+
+        while (CurrentArmorTimeElapsed < ArmorUpDuration)
+        {
+            CurrentArmorTimeElapsed += Time.deltaTime;
+            if (PerformDeltaAttack)
+            {
+                PerformDeltaAttack = false;
+                ArmadilloAnim.SetBool("HitDuringArmor", true);
+                yield return new WaitForSeconds(1f);
+                FireDeltaAttack();
+                ArmadilloAnim.SetBool("HitDuringArmor", false);
+            }
+            Debug.Log(CurrentArmorTimeElapsed);
+            yield return new WaitForSeconds(0.1f);
+        }
+        ArmadilloAnim.SetBool("LowerArmor", true);
+        yield return new WaitForSeconds(0.1f);
+        ArmadilloAnim.SetBool("LowerArmor", false);
+        ArmadilloAnim.SetBool("ArmorUp", false);
+        Invoke("DelaySettingAttackFalse", 1.5f);
+        ArmorRaised = false;
+        Debug.Log(Time.time);
+        yield return 0;
+    }
+
+    void FireDeltaAttack()
+    {
+        GameObject Projectile;
+
+        for (int i = 1; i < 6; ++i)
+        {
+            Projectile = Instantiate(ArmadilloProjectilePrefab[0], transform.position, Quaternion.identity) as GameObject;
+            Projectile.transform.parent = this.transform;
+            Projectile.GetComponent<ArmadilloShot>().SetShotNumber(i);
+            Projectile.GetComponent<ArmadilloShot>().SetShotSpeed(DeltaAttackShotSpeed);
+        }
+
+    }
 
     IEnumerator FireProjectiles()
     {
@@ -380,7 +434,6 @@ public class ArmouredArmadilloAI : MonoBehaviour {
             {
                 InitialRollTowardsPlayer = false;
                 ++CurrentWallHits;
-                //VerticalPull = Random.Range(15, 26);
                 VerticalPull = Random.Range(35, 41);
                 HorizontalPull = Random.Range(10, 21);
             }
@@ -390,7 +443,7 @@ public class ArmouredArmadilloAI : MonoBehaviour {
         {
             if (trigger.gameObject.tag == "BusterShotMedium" || trigger.gameObject.tag == "BusterShotLarge")
             {
-                //do delta attk if hit change sound
+                PerformDeltaAttack = true;
                 SoundEffects.PlayOneShot(SoundClips[3]);
             }
         }

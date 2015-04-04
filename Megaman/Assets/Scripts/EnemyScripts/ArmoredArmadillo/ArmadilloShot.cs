@@ -17,6 +17,7 @@ public class ArmadilloShot : MonoBehaviour {
     //from 1-5, used to identify which shot I am to
     //deduce which direction i should go
     float ShotNumber = 0;
+    float DeltaShotSpeed;
 
 	// Use this for initialization
 	void Start () {
@@ -24,6 +25,8 @@ public class ArmadilloShot : MonoBehaviour {
 		InitialPos.y = transform.position.y;
 		ParentPos.x = transform.parent.transform.position.x;
 		ParentPos.y = transform.parent.transform.position.y;
+
+        DeltaShotSpeed = GetComponentInParent<ArmouredArmadilloAI>().DeltaAttackShotSpeed;
 
         ParentFacingRight = GetComponentInParent<ArmouredArmadilloAI>().FacingRight;
         if (ParentFacingRight)
@@ -38,23 +41,31 @@ public class ArmadilloShot : MonoBehaviour {
 
         if (ShotNumber == 1)//firing right
         {
+            if (ShotSpeed == DeltaShotSpeed && !ParentFacingRight) { Flip(); }
             DirectionTranslation = (Vector3.right * Movement);
         }
         else if (ShotNumber == 2)//firing left
         {
+            if (ShotSpeed == DeltaShotSpeed && ParentFacingRight) { Flip(); }
             DirectionTranslation = (Vector3.left * Movement);
         }
-        else if (ShotNumber == 3)//firing up
+        else if (ShotNumber == 3)//firing diagonally left
         {
-            DirectionTranslation = (Vector3.up * Movement);
+            if (ShotSpeed == DeltaShotSpeed && ParentFacingRight) { Flip(); }
+            transform.eulerAngles = new Vector3(0, 0, -45);
+            DirectionTranslation = (Vector3.left * Movement);
         }
-        else if (ShotNumber == 4)//firing diagonally left
+        else if (ShotNumber == 4)//firing up
         {
-            DirectionTranslation = (Vector3.left * Movement) + (Vector3.up * Movement) ;
+            if (ShotSpeed == DeltaShotSpeed && ParentFacingRight) { Flip(); }
+            transform.eulerAngles = new Vector3(0, 0, -90);
+            DirectionTranslation = (Vector3.left * Movement);
         }
         else
         {// == 5 firing diagonally right
-            DirectionTranslation = (Vector3.right * Movement) + (Vector3.up * Movement);
+            transform.eulerAngles = new Vector3(0, 0, -135);
+            if (ShotSpeed == DeltaShotSpeed && ParentFacingRight) { Flip(); }
+            DirectionTranslation = (Vector3.left * Movement);
         }
 	}
 
@@ -95,5 +106,10 @@ public class ArmadilloShot : MonoBehaviour {
     public void SetShotNumber(float WhichNumber)
     {
         ShotNumber = WhichNumber;
+    }
+
+    public void SetShotSpeed(float Speed)
+    {
+        ShotSpeed = Speed;
     }
 }
