@@ -383,7 +383,6 @@ public class ArmouredArmadilloAI : MonoBehaviour {
         GameObject.Find("Character").GetComponent<Animator>().SetBool("BossIsSpawning", false);
         ArmadilloAnim.SetBool("Spawning", Spawning);
         MainAudio.clip = SoundClips[1];//boss entrance clip
-        MainAudio.volume = 0.1f;
         MainAudio.Play();
         //delay for player to situate themselves
     }

@@ -58,7 +58,6 @@ public class MegamanMovement : MonoBehaviour {
 
 	//used to handle respawning
 	public Transform SpawnPoint;
-	public AudioSource DeathSound;
 
 	bool InWater = false;
 	public bool IsBossSpawning = false;
@@ -76,6 +75,7 @@ public class MegamanMovement : MonoBehaviour {
 		HealthBarAnim.SetInteger ("Health", 16 - (int)Health);
 		if (Health <= 0 && !Dieing) {
             Dieing = true;
+            SoundEffects.PlayOneShot(MegaManSoundClips[2]);
 			StartCoroutine("Death");		
 		}
 
@@ -273,6 +273,7 @@ public class MegamanMovement : MonoBehaviour {
 		if (collide.gameObject.tag == "Spikes" && !Dieing) 
 		{
             Dieing = true;
+            SoundEffects.PlayOneShot(MegaManSoundClips[2]);
 			StartCoroutine("Death"); 
 		}
 
@@ -288,8 +289,10 @@ public class MegamanMovement : MonoBehaviour {
 
 	void OnTriggerEnter2D(Collider2D trigger){
 
-        if (trigger.tag == "Spikes")
+        if (trigger.tag == "Spikes" && !Dieing)
         {
+            Dieing = true;
+            SoundEffects.PlayOneShot(MegaManSoundClips[2]);
             StartCoroutine("Death");
         }
 
@@ -399,7 +402,6 @@ public class MegamanMovement : MonoBehaviour {
 		}
 
 		//handle megaman's death
-		DeathSound.Play ();
 		anim.SetBool ("Death", true);
 		yield return new WaitForSeconds(0.5f);
 
