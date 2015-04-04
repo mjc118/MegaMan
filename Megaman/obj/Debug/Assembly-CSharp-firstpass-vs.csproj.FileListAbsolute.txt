@@ -21,3 +21,4 @@ F:\Mike\Documents\GitHub\MegaMan\Megaman\Temp\bin\Debug\Unity.DataContract.dll
 F:\Mike\Documents\GitHub\MegaMan\Megaman\Temp\bin\Debug\ICSharpCode.NRefactory.dll
 F:\Mike\Documents\GitHub\MegaMan\Megaman\obj\Debug\Assembly-CSharp-firstpass.dll
 F:\Mike\Documents\GitHub\MegaMan\Megaman\obj\Debug\Assembly-CSharp-firstpass.pdb
+F:\Mike\Documents\GitHub\MegaMan\Megaman\obj\Debug\Assembly-CSharp-firstpass-vs.csprojResolveAssemblyReference.cache
