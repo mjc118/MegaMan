@@ -24,6 +24,8 @@ public class MegamanMovement : MonoBehaviour {
 
 	Animator anim;
     Animator HealthBarAnim;
+    Animator LifeCounterAnim;
+    public int CurrentLives;
 
 	//for sliding
 	public bool onWall = false;
@@ -49,6 +51,7 @@ public class MegamanMovement : MonoBehaviour {
 
 	//used to handle respawning and the animation
 	public bool Respawning = true;
+    bool Dieing = false;
 
 	public AudioSource SoundEffects;
 	public AudioClip[] MegaManSoundClips;
@@ -64,13 +67,15 @@ public class MegamanMovement : MonoBehaviour {
 	void Start () {
 		anim = GetComponent<Animator> ();
         HealthBarAnim = GameObject.Find("Main Camera/MMXHealthBar/HealthMissing").GetComponent<Animator>();
+        LifeCounterAnim = GameObject.Find("Main Camera/Lives").GetComponent<Animator>();
 		StartCoroutine ("InitialSpawn");
 	}
 
 	void FixedUpdate()
 	{		
 		HealthBarAnim.SetInteger ("Health", 16 - (int)Health);
-		if (Health <= 0) {
+		if (Health <= 0 && !Dieing) {
+            Dieing = true;
 			StartCoroutine("Death");		
 		}
 
@@ -265,8 +270,9 @@ public class MegamanMovement : MonoBehaviour {
 
 	void OnCollisionEnter2D(Collision2D collide)
 	{
-		if (collide.gameObject.tag == "Spikes") 
+		if (collide.gameObject.tag == "Spikes" && !Dieing) 
 		{
+            Dieing = true;
 			StartCoroutine("Death"); 
 		}
 
@@ -396,6 +402,18 @@ public class MegamanMovement : MonoBehaviour {
 		DeathSound.Play ();
 		anim.SetBool ("Death", true);
 		yield return new WaitForSeconds(0.5f);
+
+        --CurrentLives;
+        Debug.Log(CurrentLives);
+        if (CurrentLives < 0)
+        {
+            //CurrentLives = 2;
+            Application.LoadLevel("MainMenu");
+        }
+        else
+        {
+            LifeCounterAnim.SetInteger("Lives", CurrentLives);
+        }
 		
 		//immediately say we are respawning so we don't initiate falling animation
 		Respawning = true;
@@ -408,6 +426,11 @@ public class MegamanMovement : MonoBehaviour {
 	
 	IEnumerator Respawn(){
 		Health = 16f;
+        Dieing = false;
+        if (!InWater)
+        {
+            rigidbody2D.gravityScale = 1f;
+        }
 		//delay so that OnGround doesn't return true instantly
 		yield return new WaitForSeconds (0.5f);
 		while (!OnGround) {
