@@ -70,6 +70,7 @@ public class NeonTigerAI : MonoBehaviour {
             {
                 GetComponentInParent<EnemySpawnPoint>().IsThisEnemyAlive = false;
                 GetComponentInParent<EnemySpawnPoint>().SpawnBoss = false;
+                Application.LoadLevel("MainMenu");
                 Destroy(gameObject);
             }
         }

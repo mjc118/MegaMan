@@ -23,7 +23,7 @@ public class MenuSelection : MonoBehaviour {
         //by default our Selection starts on the far left
         CurrentSelection = 0;
         SelectionBox.position = SelectionBoxCoordinates[0];
-        //LocationDot.position = LocationDotCoordinates[0];
+        LocationDot.position = LocationDotCoordinates[0];
 	}
 	
 	// Update is called once per frame
@@ -32,15 +32,38 @@ public class MenuSelection : MonoBehaviour {
         {
             --CurrentSelection;
             SelectionBox.position = SelectionBoxCoordinates[CurrentSelection];
-            //LocationDot.position = LocationDotCoordinates[CurrentSelection];
+            LocationDot.position = LocationDotCoordinates[CurrentSelection];
             SoundEffectSource.PlayOneShot(MenuSounds[0]);
         }
         else if (Input.GetButtonDown("Right") && CurrentSelection < 2)
         {
             ++CurrentSelection;
             SelectionBox.position = SelectionBoxCoordinates[CurrentSelection];
-            //LocationDot.position = LocationDotCoordinates[CurrentSelection];
+            LocationDot.position = LocationDotCoordinates[CurrentSelection];
             SoundEffectSource.PlayOneShot(MenuSounds[0]);
         }
+
+        if (Input.GetButtonDown("Jump"))
+        {
+            SoundEffectSource.PlayOneShot(MenuSounds[1]);
+            Invoke("LoadLevel", 1f);
+            
+        }
 	}
+
+    void LoadLevel()
+    {
+        if (CurrentSelection == 0)
+        {
+            Application.LoadLevel("WaterStage");
+        }
+        else if (CurrentSelection == 1)
+        {
+            Application.LoadLevel("TunnelRhinoStage");
+        }
+        else
+        {
+            Application.LoadLevel("NeonTigerStage");
+        }
+    }
 }

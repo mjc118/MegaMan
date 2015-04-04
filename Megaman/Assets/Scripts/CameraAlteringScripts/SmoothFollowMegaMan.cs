@@ -4,6 +4,7 @@ using System.Collections;
 public class SmoothFollowMegaMan : MonoBehaviour {
 	public Transform target;
 	public float CameraLowerLimit;
+    public float CameraUpperLimit;
 	public float CameraLeftLimit;
 	public float distance = 3.0f;
 	public float height = 3.0f;
@@ -30,7 +31,7 @@ public class SmoothFollowMegaMan : MonoBehaviour {
                 transform.position = Vector3.Lerp(transform.position, new Vector3(32.8f, 17.7f, -10f), Time.deltaTime * damping);
             }
 		}
-		else if(target.position.y > CameraLowerLimit && target.position.x > CameraLeftLimit){
+		else if(target.position.y > CameraLowerLimit && target.position.y < CameraUpperLimit && target.position.x > CameraLeftLimit){
 			Vector3 wantedPosition;
 			if(followBehind)
 				wantedPosition = target.TransformPoint(0, height, -distance);

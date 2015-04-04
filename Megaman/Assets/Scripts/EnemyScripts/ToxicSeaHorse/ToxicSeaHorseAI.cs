@@ -77,6 +77,7 @@ public class ToxicSeaHorseAI : MonoBehaviour {
             {
                 GetComponentInParent<EnemySpawnPoint>().IsThisEnemyAlive = false;
                 GetComponentInParent<EnemySpawnPoint>().SpawnBoss = false;
+                Application.LoadLevel("MainMenu");
                 Destroy(gameObject);
             }
         }
