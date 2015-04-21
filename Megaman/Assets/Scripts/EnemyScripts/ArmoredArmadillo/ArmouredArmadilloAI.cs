@@ -175,13 +175,13 @@ public class ArmouredArmadilloAI : MonoBehaviour {
                 int AttackRoll = Random.Range(0, 10);
                 Debug.Log(AttackRoll);
 
-                if (Health < 20 && AttackRoll > 7)
+                if (Health < 25 && AttackRoll > 6)
                 {
                     ArmorUpDuration = Random.Range(1, 2);
                     ArmorRaised = true;
                     StartCoroutine("ArmorUp");
                 }
-                else if (AttackRoll < 6)
+                else if (AttackRoll < 5)
                 {
                     if(FacingRight){ CurrentDirectionIsLeft = false; }
                     else{CurrentDirectionIsLeft = true;}
